@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+ #customers
+{
+    border: 2px solid black;
+    background-color: lightblue;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    font-size: 2rem;
+    border-radius: 10%;
+
+}
+
+#customer-btn{
+    background-color: rgb(116, 208, 116);
+    border: 2px solid black;
+    width:25%;
+    height: 50px;
+    margin: 10px;
+    border-radius: 10%;
+
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#new-customer-btn{
+    background-color: green;
+    text-decoration: none;
+    font-size: 2.5rem;
+    width: 20%;
+    
+    border-radius: 10px;
+}
+
+#each-customer{
+    /* background-color: grey; */
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-size: 2rem;
+    
+}
+
+#destroy-btn{
+    margin-top: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.heading-one{
+    color: blueviolet;
+}

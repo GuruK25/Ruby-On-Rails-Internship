@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Customers" %>
+
+<h1>Customers</h1>
+
+<div id="customers">
+  <% @customers.each do |customer| %>
+    <%= render customer %>
+    <p id="customer-btn">
+      <%= link_to "Show this customer", customer %>
+    </p>
+    <hr>
+  <% end %>
+</div>
+
+<p id="new-customer-btn">
+  <%= link_to "New customer", new_customer_path %>
+</p>
