@@ -154,4 +154,55 @@
   </tr>
 </table>
 
+<br><br>
+
+<h2>Day 3</h2>
+
+<h3>Rails Project Configuration Guide</h3>
+
+<strong>The Core Structure</strong>
+<ul>
+  <li>bin/: The "Executable Tools." Contains scripts like bin/rails that automate code generation, database management, and server startup.</li>
+  <li>config/: The "Application Brain." The central hub for environment settings, database credentials, and routing rules.</li>
+  <li>application.rb: The "Global Hub." Boots the app, loads gems, and sets universal rules (like Time Zones). Errors here prevent the app from starting.</li>
+  <li>puma.rb: The "Engine Room." Configures the web server's "muscle" by defining threads and workers to handle multiple user requests simultaneously.</li>
+</ul>
+
 <br>
+<strong>Environments (config/environments/)</strong>
+<ul>
+  <li>development.rb: The "Builder's Bench." Enables instant code reloading and detailed error reports for fast debugging.</li>
+  <li>test.rb: The "Sandbox." An isolated area to run tests and simulate errors without risking real data.</li>
+  <li>production.rb: The "Vault." Optimizes speed and locks down security by hiding errors and forcing HTTPS (config.force_ssl = true).</li>
+</ul>
+<br>
+
+<strong>Initializers (config/initializers/)</strong>
+<p>Small Ruby files that run once during startup to set specific rules:</p>
+<ul>
+<li>assets.rb: The "Stylist." Instructions for mashing CSS/JS into fast, compressed files for production.</li>
+<li>content_security_policy.rb: The "Security Guard." Prevents script injection (XSS) by whitelisting trusted content sources.</li>
+<li>filter_parameter_logging.rb: The "Privacy Mask." Blurs sensitive data (passwords/CC numbers) in logs.</li>
+<li>inflections.rb: The "Grammar Coach." Teaches Rails how to pluralize irregular words (e.g., Person -> People).</li>
+<li>ci.rb: The "Test Detector." Adjusts settings for automated environments (like GitHub Actions) to speed up testing.</li>
+</ul>
+<br>
+
+<strong>Configuration Files (.yml)</strong>
+<ul>
+  <li>database.yml: The "Bridge." Connects your app code to your physical data storage.</li>
+  <li>cable.yml: The "Live Wire." Configures WebSockets for real-time features like chat or live alerts.</li>
+  <li>cache.yml: The "Short-term Memory." Stores "pre-calculated" results in high-speed memory for instant retrieval.</li>
+  <li>queue.yml: The "Shift Schedule." Manages background workers (Sidekiq) to handle heavy tasks like emails.</li>
+  <li>storage.yml: The "Shipping Manifest." Defines where to upload files (Local Disk vs. Cloud like Amazon S3).</li>
+  <li>deploy.yml: The "Launch Checklist." Steps to build, test, and ship your code to a live server.</li>
+</ul>
+<br>
+<strong>The Boot Sequence</strong>
+<ul>
+  <li>boot.rb: Grabs the keys (Loads Bundler and Gems).</li>
+  <li>application.rb: Sets the rules (Universal configurations).</li>
+  <li>environment.rb: Flips the switch (Initializes the entire engine).</li>
+</ul>
+
+<br><br>
