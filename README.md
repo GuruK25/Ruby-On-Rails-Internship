@@ -38,3 +38,55 @@
   <li>Stop the server: Press Ctrl + C in the terminal</li>
   </ul>
 
+<br><br>
+
+<h2>Day 2</h2>
+<h3>Database & Scaffolding Cheat Sheet</h3>
+
+
+<strong>Database Clients DBeaver (GUI Tool)</strong>
+<ul>
+  <li>Supports: PostgreSQL, MySQL, Oracle, SQL Server, NoSQL</li>
+  <li>Pros: Visual ER diagrams, Query Builder, beginner-friendly</li>
+  <li>Cons: Heavy, consumes more RAM</li>
+  <li>Note: DBeaver is only a client; DB server must be running</li>
+</ul>
+
+<br>
+
+<strong>psql (Command Line)</strong>
+<ul>
+  <li>Supports: PostgreSQL only</li>
+  <li>Pros: Fast, lightweight, ideal for scripts & terminal work Rails Project Setup</li>
+  <li>Create Project: rails new my_application -d postgresql (-d postgresql → tells Rails to use PostgreSQL instead of SQLite)</li>
+  <li>Gemfile Check: gem 'pg' # Bridge between Rails & PostgreSQL</li>
+</ul>
+
+<br>
+
+Database Initialization
+
+rails db:create → Creates the database
+rails db:migrate → Runs migrations to build tables
+Scaffolding (CRUD Generation)
+
+Command: rails generate scaffold Customer name:string email:string age:integer
+Generates Model, View, Controller automatically
+Enables immediate CRUD (Create, Read, Update, Delete)
+
+Rails Console
+
+rails c → Opens Rails Console
+Test data & run Ruby code directly against DB
+Migrations & Versioning
+
+Migrations: Files tracking DB structure changes
+Versioning: Each migration has a unique ID
+Collaboration: Team members migrate to stay synced
+Exceptions: Errors occur if app runs without latest migrations
+Key Commands Summary
+
+rails c → Open Rails Console
+rails db:create → Create DB
+rails db:migrate → Run migrations
+rails g scaffold → Generate full resource structure
