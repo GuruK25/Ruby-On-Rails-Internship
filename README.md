@@ -29,6 +29,9 @@
       Create a new Rails app: rails new my_app cd my_app
     </li>
   </ul>
+
+  <br>
+  
 <strong>Step 4: Run Rails Server</strong>
   <ul>
     
@@ -64,19 +67,35 @@
 
 <br>
 
-Database Initialization
+<strong>Database Initialization</strong>
+<ul>
+  <li>rails db:create → Creates the database</li>
+  <li>rails db:migrate → Runs migrations to build tables</li>
+</ul>
 
-rails db:create → Creates the database
-rails db:migrate → Runs migrations to build tables
-Scaffolding (CRUD Generation)
+<br>
 
-Command: rails generate scaffold Customer name:string email:string age:integer
-Generates Model, View, Controller automatically
-Enables immediate CRUD (Create, Read, Update, Delete)
+<strong>Scaffolding (CRUD Generation)</strong>
+<p>
+  Command: <i>rails generate scaffold Customer name:string email:string age:integer</i>
+  <p>Generates Model, View, Controller automatically
+    Enables immediate CRUD (Create, Read, Update, Delete)
+  </p>
+</p>
 
-Rails Console
-
-rails c → Opens Rails Console
+<br>
+<strong>Rails Console</strong>
+<table>
+  <tr>
+    <td><i>rails c </i></td>
+    <td>Opens Rails Console</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+   
 Test data & run Ruby code directly against DB
 Migrations & Versioning
 
