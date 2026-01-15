@@ -9,13 +9,18 @@
     <li>Run the installer and complete setup</li>
     <li>Verify installation: ruby -v</li>
   </ul>
+  <br>
   
-Step 2: Install Rails
-  Open Command Prompt as Administrator
-  Install Rails gem: gem install rails
-  Verify installation: rails -v
+<strong>Step 2: Install Rails</strong>
+  <ul>
+    <li>Open Command Prompt as Administrator</li>
+    <li>Install Rails gem: gem install rails</li>
+    <li>Verify installation: rails -v</li>
+  </ul>
+
+  <br>
   
-Step 3: Create New Rails Project
+<strong>Step 3: Create New Rails Project</strong>
   Navigate to your projects folder: cd C:\Users\rahul mkdir my_app cd my_app
   Create a new Rails app: rails new my_app cd my_app
   
