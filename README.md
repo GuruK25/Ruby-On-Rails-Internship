@@ -68,10 +68,25 @@
 <br>
 
 <strong>Database Initialization</strong>
-<ul>
-  <li>rails db:create → Creates the database</li>
-  <li>rails db:migrate → Runs migrations to build tables</li>
-</ul>
+<table>
+  <tr>
+    <td>
+      <i>rails db:create</i>
+    </td>
+    <td>
+      Creates the database
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <i>rails db:migrate</i>
+    </td>
+    <td>
+      Runs migrations to build tables
+    </td>
+  </tr>
+</table>
+
 
 <br>
 
@@ -90,22 +105,53 @@
     <td><i>rails c </i></td>
     <td>Opens Rails Console</td>
   </tr>
+</table>
+  <p>Test data & run Ruby code directly against DB</p>
+  
+   <br>
+   
+<strong>Migrations & Versioning</strong>
+<p>Migrations: Files tracking DB structure changes</p>
+<p>Versioning: Each migration has a unique ID</p>
+<p>Collaboration: Team members migrate to stay synced</p>
+<p>Exceptions: Errors occur if app runs without latest migrations</p>
+
+<br>
+
+<strong>Key Commands Summary</strong>
+<table>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+      <i>rails c</i>
+    </td>
+    <td>
+      Open Rails Console
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <i>rails db:create</i>
+    </td>
+    <td>
+      Create DB
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <i>rails db:migrate</i>
+    </td>
+    <td>
+      Run migrations
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <i>rails generate scaffold</i>
+    </td>
+    <td>
+      Generate full resource structure
+    </td>
   </tr>
 </table>
-   
-Test data & run Ruby code directly against DB
-Migrations & Versioning
 
-Migrations: Files tracking DB structure changes
-Versioning: Each migration has a unique ID
-Collaboration: Team members migrate to stay synced
-Exceptions: Errors occur if app runs without latest migrations
-Key Commands Summary
-
-rails c → Open Rails Console
-rails db:create → Create DB
-rails db:migrate → Run migrations
-rails g scaffold → Generate full resource structure
+<br>
