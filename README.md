@@ -30,8 +30,11 @@
     </li>
   </ul>
 <strong>Step 4: Run Rails Server</strong>
-Start the server: rails server
-Open browser and visit: http://localhost:3000
-Run on a different port (optional): rails server -p 4000
+  <ul>
+    
+  <li>Start the server: rails server</li>
+  <li>Open browser and visit: http://localhost:3000</li>
+  <li>Run on a different port (optional): rails server -p 4000</li>
+  <li>Stop the server: Press Ctrl + C in the terminal</li>
+  </ul>
 
-Stop the server: Press Ctrl + C in the terminal
