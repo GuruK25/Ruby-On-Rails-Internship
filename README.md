@@ -3,11 +3,12 @@
 <h2>Day 1</h2>
 <h3>Software installation</h3>
 
-Step 3:
-  Download RubyInstaller from https://rubyinstaller.org
-  Run the installer and complete setup
-  Verify installation: ruby -v
-
+<strong>Step 1: Install Ruby</strong>
+  <ul>
+    <li>Download RubyInstaller from https://rubyinstaller.org</li>
+    <li>Run the installer and complete setup</li>
+    <li>Verify installation: ruby -v</li>
+  </ul>
   
 Step 2: Install Rails
   Open Command Prompt as Administrator
