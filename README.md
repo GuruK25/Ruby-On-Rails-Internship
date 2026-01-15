@@ -1,6 +1,6 @@
 # Ruby-On-Rails-Internship
 
-<h2 style="color:green">Day 1</h2>
+<h2>Day 1</h2>
 <h3>Software installation</h3>
 
 <strong>Step 1: Install Ruby</strong>
