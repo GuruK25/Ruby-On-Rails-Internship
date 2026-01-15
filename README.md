@@ -21,11 +21,15 @@
   <br>
   
 <strong>Step 3: Create New Rails Project</strong>
-  
-  Navigate to your projects folder: cd C:\Users\rahul mkdir my_app cd my_app
-  Create a new Rails app: rails new my_app cd my_app
-  
-Step 4: Run Rails Server
+  <ul>
+    <li>
+      Navigate to your projects folder: cd C:\Users\rahul mkdir my_app cd my_app
+    </li>
+    <li>
+      Create a new Rails app: rails new my_app cd my_app
+    </li>
+  </ul>
+<strong>Step 4: Run Rails Server</strong>
 Start the server: rails server
 Open browser and visit: http://localhost:3000
 Run on a different port (optional): rails server -p 4000
