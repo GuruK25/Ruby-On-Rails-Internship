@@ -206,3 +206,46 @@
 </ul>
 
 <br><br>
+
+<h2>Day 4</h2>
+<h3>Variables and Datatypes</h3>
+<strong>Variables</strong>
+<p>In ruby, Variables are of 5 types</p>
+<table>
+  <tr>
+    <th>Sl.No</th>
+    <th>type</th>
+    <th>Naming convention</th>
+  </tr>
+  <tr>
+    <td>1.</td>
+    <td>Local variables</td>
+    <td>Starts with lower case or '_'</td>
+  </tr>
+  <tr>
+    <td>2.</td>
+    <td>Global variables</td>
+    <td>Starts with '$'</td>
+  
+  </tr>
+  <tr>
+    <td>3.</td>
+    <td>Instance variables</td>
+    <td>Starts with '@'</td>
+  </tr>
+  <tr>
+    <td>4.</td>
+    <td>Class variables</td>
+    <td>Starts with '@@'</td>
+  </tr>
+  <tr>
+    <td>5.</td>
+    <td>Constant variables</td>
+    <td>Starts with uppercase</td>
+  </tr>
+</table>
+
+<br>
+
+<strong>Datatypes</strong>
+
