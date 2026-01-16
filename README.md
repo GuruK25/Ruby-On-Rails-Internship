@@ -248,4 +248,15 @@
 <br>
 
 <strong>Datatypes</strong>
+<ol>
+  <li>Integer</li>
+  <li>Float</li>
+  <li>String</li>
+  <li>Symbol</li>
+  <li>Boolean</li>
+  <li>Array</li>
+  <li>Hashes</li>
+  <li>NilClass</li>
+</ol>
 
+<br><br>
