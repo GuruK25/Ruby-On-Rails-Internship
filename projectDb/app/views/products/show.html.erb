@@ -1,0 +1,34 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+
+<p style="color: green"><%= notice %></p>
+<div style="display:flex; align-items:center; justify-content:center">
+
+  <div class="position-relative">
+    <div class="card w-70  shadow p-3 mb-5 bg-body-tertiary rounded" >
+      <div class="card-body">
+        <%= render @product %>
+
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-warning">
+            <%= link_to "Edit this product", edit_product_path(@product) %>
+          </button> 
+          <button class="btn btn-success">
+            <%= link_to "Back to products", products_path %>
+          </button>
+        
+        </div>
+        <br>
+        <div>
+        <%= button_to "Destroy this product", @product, method: :delete %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

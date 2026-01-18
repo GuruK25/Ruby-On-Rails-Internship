@@ -64,3 +64,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
+# Newly added gem to add records 
+
+gem "faker" 
