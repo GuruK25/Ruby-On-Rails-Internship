@@ -19,10 +19,11 @@
 
 # To add records using faker gem
 
-Product.create(
+20.times  do Product.create(
     name: Faker:: Commerce.product_name,
     description:  "This is sample description (faker example)",
     price: Faker:: Commerce.price(range: 200..300),
     stock: rand(10..100),
     is_active: [true, false].sample  #class method which will select a random value in the given array
 )
+end

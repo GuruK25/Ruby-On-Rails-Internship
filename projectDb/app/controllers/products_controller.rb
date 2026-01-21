@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @products = Product.all # to get the prodcucts with only active records limiting to 10. ==> Product.new.send_procuct
   end
 
   # GET /products/1 or /products/1.json
@@ -67,4 +67,6 @@ class ProductsController < ApplicationController
     def product_params
       params.expect(product: [ :name, :description, :price, :stock, :is_active ])
     end
+
+
 end
