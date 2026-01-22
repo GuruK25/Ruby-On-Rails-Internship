@@ -291,7 +291,7 @@
   <li>returns nil</li>
 </ul>
 
-<hr> <br>
+<hr> 
 <h3>Generating scaffold (Products) in the existing project(projectDb)</h3>
 <div>
 <p><strong>Scaffold :</strong> An automatically generated basic structure of the code that provides full CRUD functionality for a resource.</p>
@@ -308,7 +308,7 @@
 <div>
   <h4>Steps to create scaffold</h4>
   <div>
-    <p>1. To create a scofold(table)</p>
+    <p>1. To create a scafold(table)</p>
     <p>Command: <i>rails generate scafold Products name: string description: text price: decimal stock: integer is_active: boolean</i></p>
   </div>
   <div>
