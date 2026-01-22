@@ -294,38 +294,49 @@
 <hr> 
 <h3>Generating scaffold (Products) in the existing project(projectDb)</h3>
 <div>
-<p><strong>Scaffold :</strong> An automatically generated basic structure of the code that provides full CRUD functionality for a resource.</p>
-<div>
-  <p>Product object attributes:</p>
-  <ul>
-    <li>name - String</li>
-    <li>description - text</li>
-    <li>price - decimal</li>
-    <li>stock - Integer</li>
-    <li>is_active - boolean</li>
-  </ul>
-</div>
-<div>
-  <h4>Steps to create scaffold</h4>
+  <p><strong>Scaffold :</strong> An automatically generated basic structure of the code that provides full CRUD functionality for a resource.</p>
   <div>
-    <p>1. To create a scafold(table)</p>
-    <p>Command: <i>rails generate scafold Products name: string description: text price: decimal stock: integer is_active: boolean</i></p>
+    <p>Product object attributes:</p>
+    <ul>
+      <li>name - String</li>
+      <li>description - text</li>
+      <li>price - decimal</li>
+      <li>stock - Integer</li>
+      <li>is_active - boolean</li>
+    </ul>
   </div>
   <div>
-    <p>2. Migration</p>
-    <p>Command: <i>rails db:migrate</i></p>
-    <p>This command is used to run all pending database migrations and updates the database structure to match Rails application</p>
+    <h4>Steps to create scaffold</h4>
     <div>
-      <p>Migration is a Ruby file that describes the changes to the database, such as</p>
-      <ul>
-        <li>Creating tables</li>
-        <li>Adding/Removing the columns</li>
-        <li>Changing datatypes</li>
-        <li>Adding indexes or foreign keys</li>
-      </ul>
+      <p>1. To create a scafold(table)</p>
+      <p>Command: <i>rails generate scafold Products name: string description: text price: decimal stock: integer is_active: boolean</i></p>
+    </div>
+    <div>
+      <p>2. Migration</p>
+      <p>Command: <i>rails db:migrate</i></p>
+      <p>This command is used to run all pending database migrations and updates the database structure to match Rails application</p>
+      <div>
+        <p>Migration is a Ruby file that describes the changes to the database, such as</p>
+        <ul>
+          <li>Creating tables</li>
+          <li>Adding/Removing the columns</li>
+          <li>Changing datatypes</li>
+          <li>Adding indexes or foreign keys</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
-
+<hr>
+<h3>Different ways to add records to Database</h3>
+<div>
+  <p>Ruby on Rails project provides multiple ways to add the Records to the database. </p>
+  <p>Important ones are: </p>
+  <ol>
+    <li>Using Rails Forms</li>
+    <li>Using Rails Console</li>
+    <li>Using db/seeds.rb file</li>
+    <li>Using Faker gem</li>
+  </ol>
   
 </div>
