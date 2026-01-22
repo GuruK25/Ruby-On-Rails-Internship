@@ -261,5 +261,29 @@
 
 <br><br>
 
-<h2>Day 4</h2>
-<h3></h3>
+<h2>Day 5</h2>
+<h3>puts method and print method</h3>
+
+puts method
+In Ruby, puts method is used to print the output, usually on the terminal.
+Syntax : 
+  puts "Ruby on Rails"
+output : Ruby on Rails
+
+It automatically adds the new line at the end
+Converts Object to String using to_s method
+Returns nil
+
+<br>
+
+print method
+In Ruby, print method is used to output text to standard output.
+Syntax : print "Hello, world"
+Output : Hello, world
+
+cursor stays on the same line
+returns nil
+Calls to_s on Objects
+
+<br>
+<hr> <br>
