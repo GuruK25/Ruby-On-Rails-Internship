@@ -353,6 +353,18 @@
       <p>Creating multiple records:</p>
       <p>-> <i>Object.create([{col1: val, col2: val, ...}, {col1: val, col2: val, col3: val, ....}, .....])</i></p>
     </div>
+    <strong>3. Using db/seeds.rb file</strong>
+    <div>
+      <p>Open the db.seed.rb file</p>
+      <p>Write the code to create the records. It is similar to adding records in console.</p>
+      <ul>
+        <li>Product(objectname).create(col1: val, col2: val, col3: val, ....)</li>
+        <li>Command: <i>rails db:migrate </i></li>
+        <p>This command is used to apply database schema changes defined in the migration file to the database. (creates the database) </p>
+        <li>Command: <i>rails db:seed</i></li>
+        <p>This command is used to insert predefined data into database. (inserts data into table)</p>
+      </ul>
+    </div>
 
    
   </div>
