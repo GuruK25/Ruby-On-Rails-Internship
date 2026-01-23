@@ -338,5 +338,23 @@
     <li>Using db/seeds.rb file</li>
     <li>Using Faker gem</li>
   </ol>
+
+  <div>
+    <strong>1. Using Rails Forms(via browser)</strong>
+    <p>In Ruby on Rails, new records are added using forms by initialising a model object in the 'new' action, submitting form data to 'create' action, permitting parameters, validating through the model, and saving the record to the database using ActiveRecords.</p>
+    <br>
+    <strong>2. Using Rails console</strong>
+    <div>
+      <p>Open the console.</p>
+      <p><i>-> rails console</i> or <i>rails c</i></p>
+      <p>Add the recorde using create method.(It does both create and save) inside the console</p>
+      <p>Syntax: <i>Object.create(col1: value, col2: value, col3: value, ...)</i></p>
+      <p><i>-> Product.create(name: "name", description: "give description", price: NNN, stock: NN, is_active: BooleanValue)</i></p>
+      <p>Creating multiple records:</p>
+      <p>-> <i>Object.create([{col1: val, col2: val, ...}, {col1: val, col2: val, col3: val, ....}, .....])</i></p>
+    </div>
+    
+  </div>
+  
   
 </div>
