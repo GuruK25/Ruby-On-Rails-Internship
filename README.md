@@ -353,7 +353,8 @@
       <p>Creating multiple records:</p>
       <p>-> <i>Object.create([{col1: val, col2: val, ...}, {col1: val, col2: val, col3: val, ....}, .....])</i></p>
     </div>
-    
+
+   
   </div>
   
   
