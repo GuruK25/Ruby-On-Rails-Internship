@@ -2,9 +2,9 @@
 
 <% content_for :title, "Customers" %>
 
-<h1>Customers</h1>
+<h1>BackListed Customers</h1>
 
-#<%# @customers = @customers.blacklisted_customers(1)   %>  # Related to blacklisted_customers
+#<%# @customers = @customers.blacklisted_customers  %>
 
 <div id="customers">
   <% @customers.each do |customer| %>

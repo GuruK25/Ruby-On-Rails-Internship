@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = Product.all # to get the prodcucts with only active records limiting to 10. ==> Product.new.send_procuct
+    # @products = Product.out_of_stock   # Scope function usage(to get list of products with 0 stocks)
   end
 
   # GET /products/1 or /products/1.json
@@ -57,11 +58,23 @@ class ProductsController < ApplicationController
     end
   end
 
+  # 23/01/26
+  # Defining custom route method for path: ..../products/out_of_stock
+  def out_of_stock
+    # work flow.
+    # When the path/resource is requested or hit as product.out_of_stock. out_of_stock method in product_controller invoked.
+    # It again invokes out_of_stock scope/method defined in the Model product. 
+    # As per the logic of out_of_stock scope in Model product. It filters all the records based on the filter condition which is stock == 0.
+    # those records get stored in the @products of products_controller
+    @products = Product.out_of_stock
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params.expect(:id))
     end
+
 
     # Only allow a list of trusted parameters through.
     def product_params

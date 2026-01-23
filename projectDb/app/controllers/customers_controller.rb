@@ -3,7 +3,11 @@ class CustomersController < ApplicationController
 
   # GET /customers or /customers.json
   def index
-    @customers = Customer.all
+    # list_of_customers = [1,2,3]
+    # @customers = Customer.blacklisted_customers(list_of_customers) #Customer.all
+
+    @customers = Customer.all 
+
   end
 
   # GET /customers/1 or /customers/1.json
@@ -56,6 +60,14 @@ class CustomersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # Creating new route with path ..../customers/blacklisted_customers. 
+  def blacklisted_customers
+    customer_ids = [1,2,5]
+    # @customers = Customer.blacklisted_customers([1,2])
+    @customers = Customer.blacklisted_customers(customer_ids)
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

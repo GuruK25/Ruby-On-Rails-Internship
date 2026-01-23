@@ -22,7 +22,7 @@
       </tr>
     </thead>
     <tbody>
-      # <%# @products = @products.out_of_stock %>   #Belongs to out_of_stock method. Not actually to this 
+      <% @products = @products.out_of_stock %>
       <% @products.each do |product| %>
         <tr>
           <td>

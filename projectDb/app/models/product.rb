@@ -3,9 +3,25 @@ class Product < ApplicationRecord
 
   #validation of form in through models (prewritten)
   #validates :stock, numericality: true #Checks whether the value is number or not.
-  validates :description, length: {maximum: 500}  #limits the number of charaters to max 500
-  validates :name, format: {with:/\A[a-zA-Z]+\z/, message: "Only letters are allowed"}  #regex for only alphabets.
+  # validates :description, length: {maximum: 500}  #limits the number of charaters to max 500
+  # validates :name, format: {with:/\A[a-zA-Z]+\z/, message: "Only letters are allowed"}  #regex for only alphabets.
+  # validate :check_price 
 
+  # validate :alpha_numeric   # Custom validation (Assignment)
+  # validate :valid_price     # Custom validation (Assignment)
+  # validate :valid_stock     # Custom validation (Assignment)
+  # validate :avoid_special_characters   # Custom validation (Assignment)
+  # validates :is_active, acceptance:true   # In-build validation (Assignment)  ==> checks the radio is true or false. if true then only accepts or else not   [Install using command gem install acceptance]
+  # validates :name, profanity:true         #In-built validation  (Assignment)  ==> Avoids bad words  [gem install profanity]
+
+  # Scopes 23/01/26
+  scope :out_of_stock, -> { where("stock <= ?", 0) } 
+
+  #Assignment by mam (23/01/26)
+  # To write the above scope (out_of_stock) with new route (instructions on slack app to create a new route)
+  
+  # scope :test_scope_for_joins, -> {joins(name_of_table.where)}
+  # scope :test_scope, -> query{}  #used to write a complex query inside braces{}. Any sequel query
 
   #Custom validations
   def check_price
@@ -13,11 +29,11 @@ class Product < ApplicationRecord
 
     if (stock == 0 && price > 0)
       errors.add(:stock, "Stock value cannot be 0") #It shows the error on frontend
-      # error.add "Stock value cannot be 0"  #Shows the error as loggers
+      # errors.add "Stock value cannot be 0"  #Shows the error as loggers
     end
   end
   
-  validate :check_price 
+  
 
   # Logic to get only active records limiting to 10
   # def send_procuct
@@ -82,13 +98,52 @@ class Product < ApplicationRecord
 
 
   #Assignment on (22/01/26)  ==> create custom validations
+
   #using regex check the name alpha-numeric  ---> name
   #if the product is marked as active then only should able to add price --> price 
   #if the product is marked as active then only should able to add stock --> stock
   #To not allow special characters --> description
   #for status, use inbuilt validations to check. accept only if it is checked (acceptence: true)
-  #use profinity:true on name 
+  #use profanity:true on name 
+
+
+  def alpha_numeric
+    # Here i am using match? method. It is a ruby method which is used to compare the regex expression with the string.
+    # Syntax: string.match?(reg expression)
+    #It evaluates to true or false
+    #regex is enclosed in / /
+    if !name.match?(/\A[a-zA-Z0-9]+\z/)
+      errors.add(:name, "Name should be alpha-Numeric value (Avoid special characters, space)")
+    end
+  end
+
+  def valid_price
+    # Allows price to add only if the is_active is checked
+    if is_active == false
+      errors.add(:price, "To add price, active status should be true")
+    end
+  end
+  
+  def valid_stock
+    # Allows stock to add only if the is_active is checked
+    if is_active == false
+      errors.add(:stock, "To add stock, active status should be true")
+    end
+  end
+
+  def avoid_special_characters
+    #Avoids special characters in the field
+    if !description.match?(/\A[a-zA-Z0-9 ]+\z/)
+      errors.add(:description, "Description field should not constain special characters")
+    end
+  end
+
+
+  # To use profanity validator
 
 
 
+
+
+  
 end
