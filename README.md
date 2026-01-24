@@ -454,4 +454,52 @@ At the top of the hierarchy is BasicObject.
 <p><strong>respnd_to? method:</strong>It checks whether an object can respond to a given method</p>
 <p>Object.respond_to?(:method_name)</p>
 <p>It returns, true: method exits and callable. false: mthod doesnot exits</p>
+<br><br>
+<h2>Day 8</h2>
+<h3>Condtional statements and Access Modifiers</h3>
+<h4>Conditional statements</h4>
+<div>
+  Ruby provides various conditional statements in order to execute specific block of code based on particular condtions.
+  <ol>
+    <li><strong>if condition</strong>: 
+      <p>The block of execute only if the condition evaluates to true.</p>
+    </li>
+    <li><strong>if-else condtion</strong>:
+    <p>if block executes if the condtion evaluates to true, or else block get executed.</p>
+    </li>
+    <li>
+      <strong>if-elsif :</strong>
+      <p>It is combination of multiple if-else statement. We can pass multiple condtions.</p>
+    </li>
+    <li>
+      <strong>unless statement</strong>:
+      <p>This is opposite of if statement. It executes if the condtion evaluates to false.</p>
+    </li>
+    <li><strong>Case statement:</strong>
+    <p>It is a switch statement in ruby. It is another type of if-elsif ladder.</p>
+    </li>
+  </ol>
+  Additional info: https://www.tutorialspoint.com/ruby/ruby_if_else.htm
+  <hr>
+  <h4>Access specifiers</h4>
+  Access specifies are used to control who can call the class methods. They are used to protect the objects behaviour.
+  <ol>
+    <li>
+      <strong>public: </strong>
+      <p>Methods can be called anywhere.</p>
+      <p>This is default for all methods.</p>
+    </li>
+    <li>
+      <strong>protected: </strong>
+      <p>The protected access modifier is used to define methods that can only be accessed within the class where they are defined or within subclasses of that class. </p>
+    </li>
+    <li>
+      <strong>private: </strong>
+      <p>The private access modifier restricts visibility of methods and variables to within the class itself.</p>
+      <p>Methods declared as private cannot be called from outside the class scope; they can only be invoked by other methods within the same class.</p>
+    </li>
+  </ol>
+  Addtional info: https://www.scaler.com/topics/ruby/access-modifiers-in-ruby/
+</div>
+
 
