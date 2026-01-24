@@ -502,4 +502,37 @@ At the top of the hierarchy is BasicObject.
   Addtional info: https://www.scaler.com/topics/ruby/access-modifiers-in-ruby/
 </div>
 
+<br><br>
+<h2>Day 9</h2>
+<h3>Form validations</h3>
+<div>
+  <p>Form validation means how Rails prevents invalid data from being saved to the database.</p>
+  <p>Instead of trusting browser or user, Rails validates data on the server, usually at the model level.</p>
+  <p>Rails prvides alot of pre-built validations. Along with this, it also allows developer to define custom validations.</p>
+  <div>
+    <strong>pre-built validations</strong>
+    <p>They live in the model and are provided by ActiveModel:Validations</p>
+    <p>These are wrote using the keyword:- validates</p>
+    <ol>
+      <li><strong>presence: </strong> Ensures the field is not empty or nil</li>
+      <li><strong>length: </strong>Controls minimum, maximum or exact length.</li>
+      <li><storng>uniqueness: </storng>Ensures the value is unique in the database.</li>
+      <li><strong>format: </strong>Validates using a regular expression.</li>
+      <li><strong>numericity: </strong>Ensures the value is a number</li>
+      <li><strong>inclusion: </strong>Restricts values to a list or a range</li>
+      <li><strong>exclusion:</strong>Opposite of inclusion.</li>
+      <li><strong>confirmation:</strong>Used for email or password confirmation fields.</li>
+      <li><strong>acceptence:</strong>Common for terms and conditons</li>
+      <li><strong>absence:</strong>Ensures a field is blank.</li>
+    </ol>
+  </div>
+  <div>
+    <strong>Custom validations</strong>
+    <p>Custom validations are used when built-in validations are not enough.</p>
+    <p>They are used when the validation logic depends on multiple fields. </p>
+    <p>They are included using the keyword:- validate (singular)</p>
+    <p>Validation logic are wrote inside the Model.</p>
+  </div>
+</div>
+
 
