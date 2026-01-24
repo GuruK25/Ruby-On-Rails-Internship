@@ -398,3 +398,55 @@
   </ol>
   Link : https://www.geeksforgeeks.org/ruby/ruby-loops-for-while-do-while-until/
 </div>
+<br><br>
+<h2>Day 7</h2>
+<h3>Object Heirarchy and method lookup</h3>
+<p>Object hierarchy means how all classes and objects are related to each other through inheritence.</p>
+<p>Ruby has a very clean and consistent hierarchy because everything is an object.</p>
+
+At the top of the hierarchy is BasicObject.
+<ol>
+  <li>
+    BasicObject:
+    <ul>
+      <li>It is a class</li>
+      <li>This class is parent of all the classes</li>
+    </ul>
+  </li>
+
+  <li>
+    Object:
+    <ul>
+      <li>
+        This is also a class
+      </li>
+      <li> 
+        It inherits from BasicObject
+      </li>
+      <li>
+           Most ruby classes inherit from Object.
+      </li>
+      <li>
+        <p>Provides common methods like</p>
+        <p>to_s</p>
+        <p>nil?</p>
+        <p>inspect</p> 
+        <p>class</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    3. Kernal Module
+    <ul>
+      <li>This is a module mixed into Object class</li>
+      <li>A module included in Object class</li>
+      <li>Gives global methods such as</li>
+      <p>puts</p>
+      <p>gets</p>
+      <p>print</p>
+      <p>exit</p>
+    </ul>
+  </li>
+  <li>Custom classes</li>
+</ol>
+
