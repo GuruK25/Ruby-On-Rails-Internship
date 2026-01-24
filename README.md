@@ -365,6 +365,19 @@
         <p>This command is used to insert predefined data into database. (inserts data into table)</p>
       </ul>
     </div>
+    <strong>4. Using gems (Faker Gem)</strong>
+    <p>Faker gem is used to add the duplicate records to the database.</p>
+    <div>
+      <p>In the gem file add: <i>gem "faker"</i></p>
+      <p>Then in the terminal, execute: <i>bundle install</i></p>
+      <p>Instead, Can add the gems directly to the project using: <i>gem install <gem-name> </i></p>
+      <ol>
+        Other list related to gems
+        <li><i>gem list</i> : Gives the list of gems </li>
+        <li><i>gem list info <gem-name></i> : Details of a gem</li>
+        <li><i>gem list <gem-name> -i</i> : Returns true if gem existed.</li>
+      </ol>
+    </div>
 
    
   </div>
