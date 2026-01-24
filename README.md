@@ -372,15 +372,29 @@
       <p>Then in the terminal, execute: <i>bundle install</i></p>
       <p>Instead, Can add the gems directly to the project using: <i>gem install <gem-name> </i></p>
       <ol>
-        Other list related to gems
+        Other commands related to gems
         <li><i>gem list</i> : Gives the list of gems </li>
         <li><i>gem list info <gem-name></i> : Details of a gem</li>
         <li><i>gem list <gem-name> -i</i> : Returns true if gem existed.</li>
       </ol>
     </div>
-
-   
   </div>
-  
+</div>
+          <br><br>
+<h2>Day 6</h2>
+<h3>Looping statements</h3>
+<div>
+  Loops in ruby are used to do repeatative work untill it meets a certain condition.
+  Ruby provides different types of looping statements.
+  <ol>
+    <li>while loop
+    </li>
+    <li>until loop</li>
+    <li>for loop</li>
+    <li>each iterator</li>
+    <li>times loop</li>
+    <li>lood do</li>
+    <li>each_with_index</li>  
+  </ol>
   
 </div>
