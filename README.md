@@ -449,4 +449,9 @@ At the top of the hierarchy is BasicObject.
   </li>
   <li>Custom classes</li>
 </ol>
+<p><storng>ancestors method:</storng> It is used to show method lookup(Lists all the classes from current class to superclass)</p>
+<p><strong>Lookup path:</strong>The exact order ruby uses to search for a method.</p>
+<p><strong>respnd_to? method:</strong>It checks whether an object can respond to a given method</p>
+<p>Object.respond_to?(:method_name)</p>
+<p>It returns, true: method exits and callable. false: mthod doesnot exits</p>
 
