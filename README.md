@@ -535,4 +535,27 @@ At the top of the hierarchy is BasicObject.
   </div>
 </div>
 
+<br><br>
+<h2>Day 10</h2>
+<h3>Scopes and Custom routes.</h3>
+<div>
+  <p>A scope is a named, reusable database query defined in a model.</p>
+  <p>Instean of repeating the same query everywhere, you define it once and reuse it.</p>
+  <div>
+    <p>Why?</p>
+    <ol>
+      <li>Keeps controller clean.</li>
+      <li>Avoids duplicate query logic.</li>
+      <li>Improves redability.</li>
+      <li>Chainable and composable</li>
+    </ol>
+  </div>
+
+  <p>There are two types of scopes. </p>
+  <p>1. scope with parameter</p>
+  <p>2. scope without parameter.</p>
+
+  Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
+</div>
+
 
