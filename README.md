@@ -396,5 +396,5 @@
     <li>lood do</li>
     <li>each_with_index</li>  
   </ol>
-  
+  Link : https://www.geeksforgeeks.org/ruby/ruby-loops-for-while-do-while-until/
 </div>
