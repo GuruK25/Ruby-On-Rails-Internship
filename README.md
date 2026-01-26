@@ -338,5 +338,224 @@
     <li>Using db/seeds.rb file</li>
     <li>Using Faker gem</li>
   </ol>
-  
+
+  <div>
+    <strong>1. Using Rails Forms(via browser)</strong>
+    <p>In Ruby on Rails, new records are added using forms by initialising a model object in the 'new' action, submitting form data to 'create' action, permitting parameters, validating through the model, and saving the record to the database using ActiveRecords.</p>
+    <br>
+    <strong>2. Using Rails console</strong>
+    <div>
+      <p>Open the console.</p>
+      <p><i>-> rails console</i> or <i>rails c</i></p>
+      <p>Add the recorde using create method.(It does both create and save) inside the console</p>
+      <p>Syntax: <i>Object.create(col1: value, col2: value, col3: value, ...)</i></p>
+      <p><i>-> Product.create(name: "name", description: "give description", price: NNN, stock: NN, is_active: BooleanValue)</i></p>
+      <p>Creating multiple records:</p>
+      <p>-> <i>Object.create([{col1: val, col2: val, ...}, {col1: val, col2: val, col3: val, ....}, .....])</i></p>
+    </div>
+    <strong>3. Using db/seeds.rb file</strong>
+    <div>
+      <p>Open the db.seed.rb file</p>
+      <p>Write the code to create the records. It is similar to adding records in console.</p>
+      <ul>
+        <li>Product(objectname).create(col1: val, col2: val, col3: val, ....)</li>
+        <li>Command: <i>rails db:migrate </i></li>
+        <p>This command is used to apply database schema changes defined in the migration file to the database. (creates the database) </p>
+        <li>Command: <i>rails db:seed</i></li>
+        <p>This command is used to insert predefined data into database. (inserts data into table)</p>
+      </ul>
+    </div>
+    <strong>4. Using gems (Faker Gem)</strong>
+    <p>Faker gem is used to add the duplicate records to the database.</p>
+    <div>
+      <p>In the gem file add: <i>gem "faker"</i></p>
+      <p>Then in the terminal, execute: <i>bundle install</i></p>
+      <p>Instead, Can add the gems directly to the project using: <i>gem install <gem-name> </i></p>
+      <ol>
+        Other commands related to gems
+        <li><i>gem list</i> : Gives the list of gems </li>
+        <li><i>gem list info <gem-name></i> : Details of a gem</li>
+        <li><i>gem list <gem-name> -i</i> : Returns true if gem existed.</li>
+      </ol>
+    </div>
+  </div>
 </div>
+          <br><br>
+<h2>Day 6</h2>
+<h3>Looping statements</h3>
+<div>
+  Loops in ruby are used to do repeatative work untill it meets a certain condition.
+  Ruby provides different types of looping statements.
+  <ol>
+    <li>while loop
+    </li>
+    <li>until loop</li>
+    <li>for loop</li>
+    <li>each iterator</li>
+    <li>times loop</li>
+    <li>lood do</li>
+    <li>each_with_index</li>  
+  </ol>
+  Link : https://www.geeksforgeeks.org/ruby/ruby-loops-for-while-do-while-until/
+</div>
+<br><br>
+<h2>Day 7</h2>
+<h3>Object Heirarchy and method lookup</h3>
+<p>Object hierarchy means how all classes and objects are related to each other through inheritence.</p>
+<p>Ruby has a very clean and consistent hierarchy because everything is an object.</p>
+
+At the top of the hierarchy is BasicObject.
+<ol>
+  <li>
+    BasicObject:
+    <ul>
+      <li>It is a class</li>
+      <li>This class is parent of all the classes</li>
+    </ul>
+  </li>
+
+  <li>
+    Object:
+    <ul>
+      <li>
+        This is also a class
+      </li>
+      <li> 
+        It inherits from BasicObject
+      </li>
+      <li>
+           Most ruby classes inherit from Object.
+      </li>
+      <li>
+        <p>Provides common methods like</p>
+        <p>to_s</p>
+        <p>nil?</p>
+        <p>inspect</p> 
+        <p>class</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    3. Kernal Module
+    <ul>
+      <li>This is a module mixed into Object class</li>
+      <li>A module included in Object class</li>
+      <li>Gives global methods such as</li>
+      <p>puts</p>
+      <p>gets</p>
+      <p>print</p>
+      <p>exit</p>
+    </ul>
+  </li>
+  <li>Custom classes</li>
+</ol>
+<p><storng>ancestors method:</storng> It is used to show method lookup(Lists all the classes from current class to superclass)</p>
+<p><strong>Lookup path:</strong>The exact order ruby uses to search for a method.</p>
+<p><strong>respnd_to? method:</strong>It checks whether an object can respond to a given method</p>
+<p>Object.respond_to?(:method_name)</p>
+<p>It returns, true: method exits and callable. false: mthod doesnot exits</p>
+<br><br>
+<h2>Day 8</h2>
+<h3>Condtional statements and Access Modifiers</h3>
+<h4>Conditional statements</h4>
+<div>
+  Ruby provides various conditional statements in order to execute specific block of code based on particular condtions.
+  <ol>
+    <li><strong>if condition</strong>: 
+      <p>The block of execute only if the condition evaluates to true.</p>
+    </li>
+    <li><strong>if-else condtion</strong>:
+    <p>if block executes if the condtion evaluates to true, or else block get executed.</p>
+    </li>
+    <li>
+      <strong>if-elsif :</strong>
+      <p>It is combination of multiple if-else statement. We can pass multiple condtions.</p>
+    </li>
+    <li>
+      <strong>unless statement</strong>:
+      <p>This is opposite of if statement. It executes if the condtion evaluates to false.</p>
+    </li>
+    <li><strong>Case statement:</strong>
+    <p>It is a switch statement in ruby. It is another type of if-elsif ladder.</p>
+    </li>
+  </ol>
+  Additional info: https://www.tutorialspoint.com/ruby/ruby_if_else.htm
+  <hr>
+  <h4>Access specifiers</h4>
+  Access specifies are used to control who can call the class methods. They are used to protect the objects behaviour.
+  <ol>
+    <li>
+      <strong>public: </strong>
+      <p>Methods can be called anywhere.</p>
+      <p>This is default for all methods.</p>
+    </li>
+    <li>
+      <strong>protected: </strong>
+      <p>The protected access modifier is used to define methods that can only be accessed within the class where they are defined or within subclasses of that class. </p>
+    </li>
+    <li>
+      <strong>private: </strong>
+      <p>The private access modifier restricts visibility of methods and variables to within the class itself.</p>
+      <p>Methods declared as private cannot be called from outside the class scope; they can only be invoked by other methods within the same class.</p>
+    </li>
+  </ol>
+  Addtional info: https://www.scaler.com/topics/ruby/access-modifiers-in-ruby/
+</div>
+
+<br><br>
+<h2>Day 9</h2>
+<h3>Form validations</h3>
+<div>
+  <p>Form validation means how Rails prevents invalid data from being saved to the database.</p>
+  <p>Instead of trusting browser or user, Rails validates data on the server, usually at the model level.</p>
+  <p>Rails prvides alot of pre-built validations. Along with this, it also allows developer to define custom validations.</p>
+  <div>
+    <strong>pre-built validations</strong>
+    <p>They live in the model and are provided by ActiveModel:Validations</p>
+    <p>These are wrote using the keyword:- validates</p>
+    <ol>
+      <li><strong>presence: </strong> Ensures the field is not empty or nil</li>
+      <li><strong>length: </strong>Controls minimum, maximum or exact length.</li>
+      <li><storng>uniqueness: </storng>Ensures the value is unique in the database.</li>
+      <li><strong>format: </strong>Validates using a regular expression.</li>
+      <li><strong>numericity: </strong>Ensures the value is a number</li>
+      <li><strong>inclusion: </strong>Restricts values to a list or a range</li>
+      <li><strong>exclusion:</strong>Opposite of inclusion.</li>
+      <li><strong>confirmation:</strong>Used for email or password confirmation fields.</li>
+      <li><strong>acceptence:</strong>Common for terms and conditons</li>
+      <li><strong>absence:</strong>Ensures a field is blank.</li>
+    </ol>
+  </div>
+  <div>
+    <strong>Custom validations</strong>
+    <p>Custom validations are used when built-in validations are not enough.</p>
+    <p>They are used when the validation logic depends on multiple fields. </p>
+    <p>They are included using the keyword:- validate (singular)</p>
+    <p>Validation logic are wrote inside the Model.</p>
+  </div>
+</div>
+
+<br><br>
+<h2>Day 10</h2>
+<h3>Scopes and Custom routes.</h3>
+<div>
+  <p>A scope is a named, reusable database query defined in a model.</p>
+  <p>Instean of repeating the same query everywhere, you define it once and reuse it.</p>
+  <div>
+    <p>Why?</p>
+    <ol>
+      <li>Keeps controller clean.</li>
+      <li>Avoids duplicate query logic.</li>
+      <li>Improves redability.</li>
+      <li>Chainable and composable</li>
+    </ol>
+  </div>
+
+  <p>There are two types of scopes. </p>
+  <p>1. scope with parameter</p>
+  <p>2. scope without parameter.</p>
+
+  Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
+</div>
+
+
