@@ -4,6 +4,7 @@
 <h3>Software installation</h3>
 
 <strong>Step 1: Install Ruby</strong>
+
   <ul>
     <li>Download RubyInstaller from https://rubyinstaller.org</li>
     <li>Run the installer and complete setup</li>
@@ -46,8 +47,8 @@
 <h2>Day 2</h2>
 <h3>Database & Scaffolding Cheat Sheet</h3>
 
-
 <strong>Database Clients DBeaver (GUI Tool)</strong>
+
 <ul>
   <li>Supports: PostgreSQL, MySQL, Oracle, SQL Server, NoSQL</li>
   <li>Pros: Visual ER diagrams, Query Builder, beginner-friendly</li>
@@ -58,6 +59,7 @@
 <br>
 
 <strong>psql (Command Line)</strong>
+
 <ul>
   <li>Supports: PostgreSQL only</li>
   <li>Pros: Fast, lightweight, ideal for scripts & terminal work Rails Project Setup</li>
@@ -68,6 +70,7 @@
 <br>
 
 <strong>Database Initialization</strong>
+
 <table>
   <tr>
     <td>
@@ -87,10 +90,10 @@
   </tr>
 </table>
 
-
 <br>
 
 <strong>Scaffolding (CRUD Generation)</strong>
+
 <p>
   Command: <i>rails generate scaffold Customer name:string email:string age:integer</i>
   <p>Generates Model, View, Controller automatically
@@ -119,6 +122,7 @@
 <br>
 
 <strong>Key Commands Summary</strong>
+
 <table>
   <tr>
     <td>
@@ -161,6 +165,7 @@
 <h3>Rails Project Configuration Guide</h3>
 
 <strong>The Core Structure</strong>
+
 <ul>
   <li>bin/: The "Executable Tools." Contains scripts like bin/rails that automate code generation, database management, and server startup.</li>
   <li>config/: The "Application Brain." The central hub for environment settings, database credentials, and routing rules.</li>
@@ -178,6 +183,7 @@
 <br>
 
 <strong>Initializers (config/initializers/)</strong>
+
 <p>Small Ruby files that run once during startup to set specific rules:</p>
 <ul>
 <li>assets.rb: The "Stylist." Instructions for mashing CSS/JS into fast, compressed files for production.</li>
@@ -189,6 +195,7 @@
 <br>
 
 <strong>Configuration Files (.yml)</strong>
+
 <ul>
   <li>database.yml: The "Bridge." Connects your app code to your physical data storage.</li>
   <li>cable.yml: The "Live Wire." Configures WebSockets for real-time features like chat or live alerts.</li>
@@ -248,6 +255,7 @@
 <br>
 
 <strong>Datatypes</strong>
+
 <ol>
   <li>Integer</li>
   <li>Float</li>
@@ -265,6 +273,7 @@
 <h3>puts method and print method</h3>
 
 <strong> puts method</strong>
+
 <p>In Ruby, puts method is used to print the output, usually on the terminal.</p>
 <div>
   <p> Syntax : </p>
@@ -280,6 +289,7 @@
 <br>
 
 <strong>print method</strong>
+
 <p>In Ruby, print method is used to output text to standard output.</p>
 <div>
   <p>Syntax : print "Hello, world"</p>
@@ -405,6 +415,7 @@
 <p>Ruby has a very clean and consistent hierarchy because everything is an object.</p>
 
 At the top of the hierarchy is BasicObject.
+
 <ol>
   <li>
     BasicObject:
@@ -503,6 +514,7 @@ At the top of the hierarchy is BasicObject.
 </div>
 
 <br><br>
+
 <h2>Day 9</h2>
 <h3>Form validations</h3>
 <div>
@@ -536,6 +548,7 @@ At the top of the hierarchy is BasicObject.
 </div>
 
 <br><br>
+
 <h2>Day 10</h2>
 <h3>Scopes and Custom routes.</h3>
 <div>
@@ -555,7 +568,86 @@ At the top of the hierarchy is BasicObject.
   <p>1. scope with parameter</p>
   <p>2. scope without parameter.</p>
 
-  Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
+Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
+
 </div>
 
+<br><br>
 
+<h2>Day 11</h2>
+<h3>Rails Components</h3>
+<div>
+  <strong>ActiveModel</strong>
+  <p>Active Model is a library in Rails made up of several modules that let plain Ruby objects behave like Rails models (similar to ActiveRecord models), but without needing a database.</p>
+  <div>
+    <ol>
+      <li>
+          <strong>ActiveModel::API</strong>
+          <p>This module gives basic model like behaviour to the class</p>
+          <p>Works with Action Pack and Action View helpers</p>
+          <p>lets objects behave like ActiveRecord models in forms and rendering.</p>
+          <ul>
+            <li>Attribute Assignment</li>
+            <li>Conversion</li>
+            <li>Naming</li>
+            <li>Translation</li>
+            <li>Validations</li>
+          </ul>
+      </li>
+      <li>
+        <strong>ActiveModel::Model</strong>
+        <p>It includes ActiveModel::API, so will get all of the above automatically.</p>
+      </li>
+      <li>
+        <strong>ActiveModel::Attrubutes</strong>
+        <p>This lets to define typed attributes on plain Ruby classes, similar to ActiveRecord</p>
+      </li>
+      <li>
+        <strong>ActiveModel::AttributeAssignment</strong>
+        <p>Allows bulk assignment of attributes using a hash, just like with ActiveRecord</p>
+      </li>
+      <li>
+        <strong>ActiveModel::AttributeMethods</strong>
+        <p>Lets us define dynamic accesors and helpers for attrubutes.</p>
+        <ul>
+          <li>attribute_method_prefix</li>
+          <li>attribute_method_suffix</li>
+          <li>alias_attribute</li>
+        </ul>
+      </li>
+      <li>
+        <strong>ActiveModel::Callbacks</strong>
+        <p>Adds callback hooks</p>
+      </li>
+      <li>
+        <strong>ActiveModel::Conversion</strong>
+        <p>Makes object convertible to model representaition in views</p>
+        <ul>
+          <li>to_model</li>
+          <li>persisted?</li>
+          <li>to_key and to_param</li>
+        </ul>
+      </li>
+      <li>
+        <strong>ActiveModel::SecurePassword</strong>
+        <p>Adds secure password handling to any class.</p>
+      </li>
+      <li>
+        <strong>ActiveModel::Serialization</strong>
+        <p>Adds JSON serialization.</p>
+        <ul>
+          <li>as_json to convert object to hash</li>
+          <li>from_json to populate an attrubute hash method.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>ActiveModel::Transalation</strong>
+        <p>Lets to define human friendly attribute names per locale.</p>
+      </li>
+      <li>
+        <strong>ActiveModel::Validations</strong>
+        <p>Allows validations like in ActiveRecords.</p>
+      </li>
+    </ol>
+  </div>
+</div>
