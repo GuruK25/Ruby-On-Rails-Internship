@@ -577,7 +577,7 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
 <h2>Day 11</h2>
 <h3>Rails Components</h3>
 <div>
-  <strong>ActiveModel</strong>
+  <strong>1. ActiveModel</strong>
   <p>Active Model is a library in Rails made up of several modules that let plain Ruby objects behave like Rails models (similar to ActiveRecord models), but without needing a database.</p>
   <div>
     <ol>
@@ -650,4 +650,104 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
       </li>
     </ol>
   </div>
+  More info: https://guides.rubyonrails.org/active_model_basics.html
+</div>
+<div>
+  <strong>2. ActiveRecord</strong>
+  <p>It is the Object Relational Mapping (ORM) in Rails.</p>
+  <p>It maps database tables to Ruby classes and rows to objects.</p>
+  <p>Provides an interface to query insert, update, and delete records without writing raw SQL.</p>
+</div>
+<div>
+  <strong>3. ActionView</strong>
+  <p>ActionView is the view layer of Rails. It is responsible for generating the HTML, JSON or other formats.</p>
+  <p>It takes data from the controller and renders into a template.</p>
+</div>
+<div>
+  <strong>4. ActionController</strong>
+  <p>ActionController is the controller layer of Rails.</p>
+  <p>It recieves HTTP request from the browser.</p>
+  <p>Interacts with models</p>
+  <p>Decides what response to send(HTML, JSON, redirect etc)</p>
+  <p>Hands data off to ActionView.</p>
+</div>
+<div>
+  <strong>5. ActionDispatch</strong>
+  <p>ActionDispatch is the low level request and response handling layer on Rails</p>
+  <p>It sits below ActionController.</p>
+  <ul>
+    <li>Receiving the raw HTTP request.</li>
+    <li>Parsing headers, params, cookies, sessions</li>
+    <li>Routing the request to the correct controller/action.</li>
+    <li>Building HTTP response.</li>
+  </ul>
+</div>
+<div>
+  <strong>6. ActionText</strong>
+  <p>ActionText is a Rails framework for handling rich text content (formatted text + embedded media) in your application.</p>
+  <p>It lets users create content like:</p>
+  <ul>
+    <li>Bold, italic, links</li>
+    <li>Lists, headings</li>
+    <li>Embedded images, files, videos</li>
+    <li>Attachments inside text</li>
+  </ul>
+</div>
+<div>
+  <strong>7. ActionMailer</strong>
+  <p>ActionMailer is the Rails framework for sending emails.</p>
+  <p>It lets us</p>
+  <ol>
+    <li>Define mailers similar to controllers</li>
+    <li>Use views/templates to generate email content</li>
+    <li>Send emails via SMTP, SendGrid, Mailgun, etc.</li>
+    <li>Deliver emails synchronously or asynchronously</li>
+  </ol>
+</div>
+<div>
+  <strong>8. ActionMailBox</strong>
+  <p>ActionMailbox is a Rails framework for receiving and processing incoming emails.</p>
+  <ul>
+    <li>Accept emails sent to your application</li>
+    <li>Route them to Ruby classes</li>
+    <li>Extract data from the email (subject, body, attachments)</li>
+    <li>Act on them (create records, reply, trigger workflows)</li>
+  </ul>
+</div>
+<div>
+  <strong>9. ActiveSupport</strong>
+  <p>ActiveSupport is the utility and extension library of Rails.</p>
+  <ul>
+    <li>Extends Ruby’s core classes (String, Array, Hash, Time, etc.)</li>
+    <li>Provides common helper tools used across Rails</li>
+    <li>Supplies infrastructure like time zones, inflections, concerns, notifications</li>
+  </ul>
+</div>
+<div>
+  <strong>10. ActionJob</strong>
+  <p>ActiveJob is Rails’ background job framework.</p>
+  <ul>
+    <li>A standard interface for background jobs</li>
+    <li>An abstraction over different job backends (Sidekiq, Resque, Delayed Job, etc.)</li>
+    <li>Tight integration with the rest of Rails</li>
+  </ul>
+</div>
+<div>
+  <strong>11. ActionCable</strong>
+  <p>ActionCable is Rails’ framework for real-time features using WebSockets.</p>
+  <ul>
+    <li>Maintain persistent connections with browsers</li>
+    <li>Push data from the server without page refresh</li>
+    <li>Build chat, notifications, live updates, dashboards, etc.</li>
+  </ul>
+</div>
+<div>
+  <strong>12. ActiveStorage</strong>
+  <p>ActiveStorage is the Rails framework for uploading, storing, and attaching files to models.</p>
+  <ul>
+    <li>Upload files (images, PDFs, videos, etc.)</li>
+    <li>Attach them to ActiveRecord models</li>
+    <li>Store them locally or in cloud services</li>
+    <li>Serve and transform them securely</li>
+  </ul>
 </div>
