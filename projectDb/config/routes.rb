@@ -35,3 +35,7 @@ Rails.application.routes.draw do
   end
   
 end
+
+# Assignment by mam 27/01/26.
+# resources :products, except: [:show]
+# When i do this. I should get error. I am getting No method error. ()

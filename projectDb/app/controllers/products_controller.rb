@@ -8,8 +8,30 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1 or /products/1.json
-  def show
-  end
+  # def show
+  # end
+
+  # Class assignment (27/01/26)
+# When i comment out the show method above and run the rails project. When i hit the route products/id we are expected to not get the output. But still getting the output.
+# Why ?
+
+# Reason: When you hit the route like products/1.
+# -> Rails check whether this route is defined or not.
+# -> There is this route defined in routes.rb (sources :products)
+# -> This route creates => GET /products/id -> product#show
+# The route exists
+# Rails doesnot care whether show() method is defined or commented out.
+# -> Rails loads controller.
+#  Rails does not fall just because show method does not exist or does not have any logic.
+# There is before_action at the top of the contoller. It will execute first.
+# Before rendering anything Rails runs this line.
+# Which executes set_product method which is a private method and returns @products = Product.find(params.expect(:id))
+# So data is available now for the view.
+# Later the @products is rendered by view for the data and shows the output on the website.
+
+
+# When you delete view file. Then you will get error on the browser.
+
 
   # GET /products/new
   def new

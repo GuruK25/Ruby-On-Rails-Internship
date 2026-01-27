@@ -2,16 +2,16 @@ class Product < ApplicationRecord
   #class work on (22/01/26)
 
   #validation of form in through models (prewritten)
-  #validates :stock, numericality: true #Checks whether the value is number or not.
-  # validates :description, length: {maximum: 500}  #limits the number of charaters to max 500
-  # validates :name, format: {with:/\A[a-zA-Z]+\z/, message: "Only letters are allowed"}  #regex for only alphabets.
-  # validate :check_price 
+  validates :stock, numericality: true #Checks whether the value is number or not.
+  validates :description, length: {maximum: 500}  #limits the number of charaters to max 500
+  validates :name, format: {with:/\A[a-zA-Z]+\z/, message: "Only letters are allowed"}  #regex for only alphabets.
+  validate :check_price 
 
-  # validate :alpha_numeric   # Custom validation (Assignment)
-  # validate :valid_price     # Custom validation (Assignment)
-  # validate :valid_stock     # Custom validation (Assignment)
-  # validate :avoid_special_characters   # Custom validation (Assignment)
-  # validates :is_active, acceptance:true   # In-build validation (Assignment)  ==> checks the radio is true or false. if true then only accepts or else not   [Install using command gem install acceptance]
+  validate :alpha_numeric   # Custom validation (Assignment)
+  validate :valid_price     # Custom validation (Assignment)
+  validate :valid_stock     # Custom validation (Assignment)
+  validate :avoid_special_characters   # Custom validation (Assignment)
+  validates :is_active, acceptance:true   # In-build validation (Assignment)  ==> checks the radio is true or false. if true then only accepts or else not   [Install using command gem install acceptance]
   # validates :name, profanity:true         #In-built validation  (Assignment)  ==> Avoids bad words  [gem install profanity]
 
   # Scopes 23/01/26
