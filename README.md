@@ -751,3 +751,59 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
     <li>Serve and transform them securely</li>
   </ul>
 </div>
+
+<br><br>
+
+<h2>Day 12</h2>
+<h3>ActionText</h3>
+<div>
+  <div>
+    <strong>Installation steps of ActionText</strong>
+    <p>ActionText is built-in starting from Rails 6.0</p>
+    <p>Run the command : <i>rails action_text:install</i></p>
+    <p>Run migrations <i>rails db:migration</i></p>
+  </div>
+  <br>
+  <div>
+    <strong>Files created in the project after installing ActionText:</strong>
+    <ul>
+      <li>app/assets/stylesheets/actiontext.css (newly created)</li>
+      <li>app/javascript/application.js (updated)</li>
+      <li>projectDb/app/views/active_storage/blobs/_blob.html.erb (newly created)</li>
+      <li>projectDb/app/views/layouts/action_text/contents/_content.html.erb (newly created)</li>
+      <li>projectDb/config/importmap.rb (updated)</li>
+      <li>projectDb/db/migrate/20260128045538_create_active_storage_tables.active_storage.rb (newly created)</li>
+      <li>projectDb/db/migrate/20260128045539_create_action_text_tables.action_text.rb (newly created)</li>
+      <li>projectDb/test/fixtures/action_text/rich_texts.yml (newly created)</li>
+    </ul>
+  </div>
+  <br>
+  <div>
+    <strong>File changes after migration.</strong>
+    <ul>
+      <li>schema.rb (updated)</li>
+    </ul>
+  </div>
+  <br>
+  <div>
+    <strong>Steps to add a ActionText column to a table.</strong>
+    <p>ActionText does not add a column into an existing table, instead it creates its own table and associaltes it with model.</p>
+    <ul>
+      <li>
+        <strong>Add <i>has_rich_text</i> to existing model</strong>
+        <p>In the cutomer/product.rb file, add --> has_rich_text :col_name</p>
+      </li>
+      <li>
+        <strong>Permit the rich text Attribute (controller)</strong>
+        <p>In the controller files, update the private method modelname_params() by adding the col_name.</p>
+      </li>
+      <li>
+        <strong>Update the form to use <i>rich_text_area</i></strong>
+        <p> <div> </p>
+        <p> <%= f.label :col_name%> </p>
+        <p> <%= f.rich_text_area :col_name %> </p>
+        <p> </div> </p>
+      </li>
+    </ul>
+  </div>
+</div>
