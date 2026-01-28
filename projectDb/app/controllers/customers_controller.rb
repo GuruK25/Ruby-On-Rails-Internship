@@ -7,24 +7,30 @@ class CustomersController < ApplicationController
     # @customers = Customer.blacklisted_customers(list_of_customers) #Customer.all
 
     @customers = Customer.all 
-
+    # raise params.inspect  This method will not take any parameters.
   end
 
   # GET /customers/1 or /customers/1.json
   def show
+    # raise params.inspect  This method takes id parameter. {"id" => "1"}
   end
 
   # GET /customers/new
   def new
     @customer = Customer.new
+    # raise params.inspect    No parameters.
   end
 
   # GET /customers/1/edit
   def edit
+    # raise params.inspect  It takes parameters=> {"id" => "1"}
   end
 
   # POST /customers or /customers.json
   def create
+
+    # raise params.inspect    It takes all parameters like id, name, email, about_me.
+
     @customer = Customer.new(customer_params)
 
     respond_to do |format|
@@ -40,6 +46,8 @@ class CustomersController < ApplicationController
 
   # PATCH/PUT /customers/1 or /customers/1.json
   def update
+    # raise params.inspect       {"_method" => "patch", "authenticity_token" => "[FILTERED]", "customer" => {"name" => "guru", "email" => "[FILTERED]", "about_me" => "<div>a</div>"}, "commit" => "Update Customer", "id" => "1"}
+
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: "Customer was successfully updated.", status: :see_other }
@@ -53,6 +61,9 @@ class CustomersController < ApplicationController
 
   # DELETE /customers/1 or /customers/1.json
   def destroy
+
+    # raise params.inspect      {"_method" => "delete", "authenticity_token" => "[FILTERED]", "id" => "1"}
+
     @customer.destroy!
 
     respond_to do |format|
@@ -77,6 +88,6 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.expect(customer: [ :name, :email ])
+      params.expect(customer: [ :name, :email, :about_me ]) # This is strong parameter.
     end
 end

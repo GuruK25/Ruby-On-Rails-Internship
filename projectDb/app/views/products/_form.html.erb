@@ -36,6 +36,15 @@
     <%= form.checkbox :is_active %>
   </div>
 
+  <% if false%>
+  #Part of ActionText adding (Ignore the false block. that is just to avoid printing the commented line)
+  <%end%>
+  <div>
+    <%= form.label :details %>
+    <%= form.rich_text_area :details %>
+  </div>
+
+
   <div>
     <%= form.submit %>
   </div>

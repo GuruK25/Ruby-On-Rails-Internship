@@ -1,4 +1,7 @@
 class Product < ApplicationRecord 
+  # Assignment by mam on (28/01/26). To add a ActionText to products table.
+  has_rich_text:details    #Part of assignment  
+
   #class work on (22/01/26)
 
   #validation of form in through models (prewritten)

@@ -1,4 +1,10 @@
 class Customer < ApplicationRecord
+
+    # 28/01/26 
+    # Adding a column to customer. It is a ActionText column. So no need to add the column in commands using schema. We must add it in model. and should not run migration.
+    # The column added through has_rich_text is added to newly created tables, not the table which the actual data is stored.
+    has_rich_text:about_me #It is a column name.
+
     #work on (22/01/26)
 
     #validation of form in through models

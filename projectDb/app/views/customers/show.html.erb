@@ -6,6 +6,15 @@
   <h3>Details</h3>
   <div >
     <%= render @customer %>
+
+    
+    <% if false %>
+    #Adding about me in the show UI. But added at _customer.html.erb so it will printed twice. So commented.
+    <p>
+      <%= @customer.about_me %>
+    </p> 
+    <% end %>
+
   </div>
   <hr>
   <div id="nav-btns-1">

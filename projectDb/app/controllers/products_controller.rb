@@ -3,13 +3,17 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
+
+    # raise params.inspect  This method will not take any parameters.
+
     @products = Product.all # to get the prodcucts with only active records limiting to 10. ==> Product.new.send_procuct
     # @products = Product.out_of_stock   # Scope function usage(to get list of products with 0 stocks)
   end
 
   # GET /products/1 or /products/1.json
-  # def show
-  # end
+  def show
+    # raise params.inspect  This method takes id parameter. {"id" => "1"}
+  end
 
   # Class assignment (27/01/26)
 # When i comment out the show method above and run the rails project. When i hit the route products/id we are expected to not get the output. But still getting the output.
@@ -35,15 +39,22 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+
+    # raise params.inspect    No parameters.
+
     @product = Product.new
   end
 
   # GET /products/1/edit
   def edit
+    # raise params.inspect  It takes parameters=> {"id" => "1"}
   end
 
   # POST /products or /products.json
   def create
+
+    # raise params.inspect    It takes all parameters all its attributes.
+
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -100,7 +111,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.expect(product: [ :name, :description, :price, :stock, :is_active ])
+      params.expect(product: [ :name, :description, :price, :stock, :is_active, :details ])
     end
 
 
