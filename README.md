@@ -806,4 +806,5 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
       </li>
     </ul>
   </div>
+  <p>For more info: https://guides.rubyonrails.org/action_text_overview.html</p>
 </div>
