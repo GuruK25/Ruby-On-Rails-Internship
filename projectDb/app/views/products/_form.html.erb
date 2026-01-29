@@ -38,11 +38,17 @@
 
   <% if false%>
   #Part of ActionText adding (Ignore the false block. that is just to avoid printing the commented line)
-  <%end%>
+  <% end %>
   <div>
     <%= form.label :details %>
     <%= form.rich_text_area :details %>
   </div>
+
+  <div>
+      <%= form.label :product_pictures %>
+      <%= form.file_field :product_pictures, multiple: true %>
+  </div>
+
 
 
   <div>

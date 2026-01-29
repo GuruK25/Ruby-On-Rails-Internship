@@ -1,6 +1,11 @@
 class Product < ApplicationRecord 
   # Assignment by mam on (28/01/26). To add a ActionText to products table.
-  has_rich_text:details    #Part of assignment  
+  has_rich_text:details    #Part of assignment
+  
+  
+  # Day 12 (29/01/26)
+  # has_one_attached:product_picture    For single attachement
+  has_many_attached:product_pictures     # For multiple attachment
 
   #class work on (22/01/26)
 

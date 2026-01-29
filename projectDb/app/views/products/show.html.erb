@@ -9,6 +9,14 @@
       <div class="card-body">
         <%= render @product %>
 
+        <% if @product.product_pictures.attached? %>
+          <% @product.product_pictures.each do |each_file| %>
+            <%= image_tag each_file  %>
+          <% end %> 
+        <% else %>
+            <p>No photos</p>
+        <% end %>
+
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-warning">
             <%= link_to "Edit this product", edit_product_path(@product) %>
