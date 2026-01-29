@@ -11,10 +11,16 @@
 
         <% if @product.product_pictures.attached? %>
           <% @product.product_pictures.each do |each_file| %>
-            <%= image_tag each_file  %>
+            <%= image_tag each_file, size: "100x100", alt: "Product image" %>
           <% end %> 
         <% else %>
             <p>No photos</p>
+        <% end %>
+
+        <% if @product.invoice.attached? %>
+          <%= link_to "View PDF", rails_blob_path(@product.invoice, disposition:"inline")%>
+        <% else %>
+            <p>No invoice file</p>
         <% end %>
 
         <div class="btn-group" role="group">

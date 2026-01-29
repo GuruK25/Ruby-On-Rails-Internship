@@ -808,3 +808,51 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
   </div>
   <p>For more info: https://guides.rubyonrails.org/action_text_overview.html</p>
 </div>
+<br><br>
+<h2>Day 12</h2>
+<h3>Active Storage</h3>
+<div>
+  <p>Active Storage is Rails’ built-in way to attach files to your models and store them somewhere (locally or in the cloud) without you having to reinvent file uploads.</p>
+  <p>Active Storage is used to </p>
+  <ul>
+    <li>Upload files (images, PDFs, videos, etc.)</li>
+    <li>Attach them to Active Record models</li>
+    <li>Store them on:</li>
+    <li>Local disk (dev/test)</li>
+    <li>Cloud services (S3, GCS, Azure)</li>
+    <li>Generate URLs for downloading or displaying files</li>
+    <li>Process images (resize, crop, etc.)</li>
+    <li>Handle multiple files per record</li>
+  </ul>
+  <p>active_storage_blobs file stores the metadata.</p>
+  <p>active_storage_attachments file joins the model to a blob.</p>
+  <strong>Installation steps</strong>
+  <ul>
+    <li>
+      <strong>Install Active Storage</strong>
+      <p>command: rails active_storage</p>
+      <p>rails db:migrate</p>
+    </li>
+    <li>
+      <strong>Configure storage(config/storage.yml)</strong>
+    </li>
+  </ul>
+  <p><stromg>Attaching files to models</strong></p>
+  <p>If it is one file</p>
+  <p>Then in the model, has_one_attached :avatar(avatar is an example.)</p>
+  <p>In controller file, add this column to the private method(params). By doing this controller allows the attached file to database.</p>
+  <p>params.expect(product: [ :name, :description, :price, :avatar])</p>
+  <p>Replace form with form.file_fiels (this type of field allows files to upload just like characters form other normal fields.)</p>
+  <p>Accessing: </p>
+  <ul>
+    <li>user.avatar.attached?</li>
+    <li>user.avatar.filename.to_a</li>
+    <li>user.avatar.content_type</li>
+    <li>user.avatar.byte_size</li>
+  </ul>
+
+  <p>If the files are multiple, replace has_one_attached with has_many_attached in the model file</p>
+  <p>Update the controller file by providing array of items.</p>
+  <p>params.expect(product: [ :name, :description, :price, avatar:[] ])</p>
+  <p>Access the multiple file using loops in the form.</p>
+</div>

@@ -7,6 +7,9 @@ class Product < ApplicationRecord
   # has_one_attached:product_picture    For single attachement
   has_many_attached:product_pictures     # For multiple attachment
 
+  # Assignment (29/01/26)
+  has_one_attached:invoice
+
   #class work on (22/01/26)
 
   #validation of form in through models (prewritten)
@@ -21,6 +24,10 @@ class Product < ApplicationRecord
   validate :avoid_special_characters   # Custom validation (Assignment)
   validates :is_active, acceptance:true   # In-build validation (Assignment)  ==> checks the radio is true or false. if true then only accepts or else not   [Install using command gem install acceptance]
   # validates :name, profanity:true         #In-built validation  (Assignment)  ==> Avoids bad words  [gem install profanity]
+
+
+  # validates :product_pictures, attached:true, content_type: ['image/jpg', 'image/jpeg'], size: {less_than: 2.megabytes, message: 'is too large'}
+  # validates :invoice, attached:true, content_type:
 
   # Scopes 23/01/26
   scope :out_of_stock, -> { where("stock <= ?", 0) } 

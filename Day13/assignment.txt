@@ -1,0 +1,10 @@
+Task 1: create col for invoice through attachment---> product
+Created a blob column with name invoice to products table.
+added link_to form method to display the document in same tab after clicking the link.
+
+Task 2: create migration to add date(DOB) -->customer
+Added dob column to customer table.
+Added dob to form 
+
+
+Task 3: form helpers (rails documentation) (edited)
