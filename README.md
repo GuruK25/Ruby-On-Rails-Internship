@@ -855,4 +855,6 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
   <p>Update the controller file by providing array of items.</p>
   <p>params.expect(product: [ :name, :description, :price, avatar:[] ])</p>
   <p>Access the multiple file using loops in the form.</p>
+
+  More information: https://guides.rubyonrails.org/v7.0/active_storage_overview.html
 </div>
