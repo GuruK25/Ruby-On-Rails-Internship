@@ -9,6 +9,16 @@
 <div id="customers">
   <% @customers.each do |customer| %>
     <%= render customer %>
+
+    <% if customer.profile_picture.attached? %>
+      <% if customer.profile_picture.image? %>
+        <%= image_tag url_for(customer.profile_picture) %>
+      <% end %>
+    <% else %>
+      <p> No photo attached </p>
+    <% end %>
+
+
     <p id="customer-btn">
       <%= link_to "Show this customer", customer %>
     </p>

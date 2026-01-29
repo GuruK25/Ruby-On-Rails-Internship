@@ -1,5 +1,8 @@
 class Customer < ApplicationRecord
 
+    #29/01/26 (Adding active_storage)
+    has_one_attached:profile_picture    # (Adding single column profile_picture to customer)
+
     # 28/01/26 
     # Adding a column to customer. It is a ActionText column. So no need to add the column in commands using schema. We must add it in model. and should not run migration.
     # The column added through has_rich_text is added to newly created tables, not the table which the actual data is stored.

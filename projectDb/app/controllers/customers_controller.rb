@@ -88,6 +88,7 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.expect(customer: [ :name, :email, :about_me ]) # This is strong parameter.
+      params.expect(customer: [ :name, :email, :about_me, :profile_picture ]) # This is strong parameter.
+                                                          # whitelisting profile_picture column
     end
 end
