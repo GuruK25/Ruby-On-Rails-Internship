@@ -574,7 +574,7 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
 
 <br><br>
 
-<h2>Day 11</h2>
+<h2>Day 12</h2>
 <h3>Rails Components</h3>
 <div>
   <strong>1. ActiveModel</strong>
@@ -754,7 +754,7 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
 
 <br><br>
 
-<h2>Day 12</h2>
+<h2>Day 13</h2>
 <h3>ActionText</h3>
 <div>
   <div>
@@ -809,7 +809,7 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
   <p>For more info: https://guides.rubyonrails.org/action_text_overview.html</p>
 </div>
 <br><br>
-<h2>Day 12</h2>
+<h2>Day 14</h2>
 <h3>Active Storage</h3>
 <div>
   <p>Active Storage is Rails’ built-in way to attach files to your models and store them somewhere (locally or in the cloud) without you having to reinvent file uploads.</p>
@@ -855,4 +855,6 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
   <p>Update the controller file by providing array of items.</p>
   <p>params.expect(product: [ :name, :description, :price, avatar:[] ])</p>
   <p>Access the multiple file using loops in the form.</p>
+
+  More information: https://guides.rubyonrails.org/v7.0/active_storage_overview.html
 </div>
