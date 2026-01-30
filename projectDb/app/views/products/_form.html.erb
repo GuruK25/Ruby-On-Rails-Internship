@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
+    <%= form.text_field :description %>
   </div>
 
   <div>
@@ -42,6 +42,11 @@
   <div>
     <%= form.label :details %>
     <%= form.rich_text_area :details %>
+  </div>
+
+  <div>
+      <%= form.label :email %>
+      <%= form.text_field :email %>
   </div>
 
   <div>

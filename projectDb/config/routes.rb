@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  # 30/01/26
+  # if Rails.env.development?
+  #   mount LetterOpenerWeb::Engine,at:"/letter_opener"
+  # end
+
   # 23/01/26 Commented these to make out_of_stock work
   # resources :products
   # resources :customers

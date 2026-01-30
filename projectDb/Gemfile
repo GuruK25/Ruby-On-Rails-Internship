@@ -69,3 +69,8 @@ end
 # Newly added gem to add records 
 
 gem "faker" 
+
+# gem to install email devtool of letter_opener. (This is using for development environment.)
+gem "letter_opener", group: :development
+
+gem "letter_opener_web", group: :develoment #(This makes the mail view on website for development and simulation)
