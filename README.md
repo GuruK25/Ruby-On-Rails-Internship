@@ -856,5 +856,39 @@ Additional info: https://www.rubyguides.com/2019/10/scopes-in-ruby-on-rails/
   <p>params.expect(product: [ :name, :description, :price, avatar:[] ])</p>
   <p>Access the multiple file using loops in the form.</p>
 
-  More information: https://guides.rubyonrails.org/v7.0/active_storage_overview.html
+More information: https://guides.rubyonrails.org/v7.0/active_storage_overview.html
+
+</div>
+<br><br>
+<h2>Day 15</h2>
+<h3>Action Mailer</h3>
+<div>
+  <p>Action Mailer is used to send the emails from the Rails application.</p>
+  <p>Action Mailer uses classes (called mailers) and views to create and configure the email to send.</p>
+  <p>Mailers are the classes that inherit from ActionMailer::Base</p>
+  <strong>Mail generation.</strong>
+  <p>Step 1: Generate the mail using mailer command.</p>
+  <i>rails generate mailer Customer</i>
+  <p>Step 2: Edit the mailer (customer_mailer.rb)</p>
+  <p>Lets add a welcome_email method to the customer_mailer.rb</p>
+  <p>Step 3: Create mailer view</p>
+  <p>For welcome_email action, we need to create a matching view in a file called welcome_email.html.rb in app/views/product_mailer/ directory.</p>
+  <p>Step 4: Call the mailer</p>
+  <p>Planning to send the welcome mail when a new customer.</p>
+  <p>In order to do that, include CustomerMailer.with(customer: @customer).welcome_email right after the customer created successfully saved.</p>
+
+  <p>Actually we are not sending the emails to actual user. In order to simulate the email sending, we are using letter_opener and letter_opener_web gems.</p>
+  <p>Need to configure the letter_opener and letter_opener_web. There are other steps to setup these gems.</p>
+  <p>Step 1: Add the gems.</p>
+  <p>In gem file, add =>  gem "letter_opener", group: :development</p>
+  <p>gem "letter_opener_web", group: :development</p>
+  <p>Run bundle install to install these gems.</p>
+  <p>Step 2: Configure ActionMailer for development</p>
+  <p>Add these in config/environments/development.rb</p>
+  <p>config.action_mailer.perform_deliveries = true</p>
+  <p>config.action_mailer.delivery_method = :letter_opener (Need to replace this with smtp while generating the real email)</p>
+  <p>config.action_mailer.default_url_option = {host: 'localhost', port: 3000}</p>
+
+  <p>Step 3: Mount letter opener web in routes</p>
+  
 </div>
