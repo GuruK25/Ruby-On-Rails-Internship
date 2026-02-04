@@ -892,3 +892,21 @@ More information: https://guides.rubyonrails.org/v7.0/active_storage_overview.ht
   <p>Step 3: Mount letter opener web in routes</p>
   
 </div>
+<br><br>
+<h2>Day 16</h2>
+<h3>Action MailBox</h3>
+<div>
+  <p>Action mailbox routes incoming emails to controller-like mailboxes for processing in the Rails application.</p>
+  <p>Action Mailbox is to recieve the mails.</p>
+  <p>Install the MailBox</p>
+  <p>rails action_mailbox:install</p>
+  <p>rails db:migrate</p>
+  <p>For development environment, no need to configure. but for production environment need configuration.</p>
+  <p>Generate a mailbox to handle</p>
+  <p>rails generate mailbox support</p>
+  <p>Creates a support_mailbox.rb in the directory app.mailboxes/ </p>
+
+  <p>From : any email</p>
+  <p>To : my_applicaiton_name@support.com</p>
+  <p>the domain support is defined in the application.</p>
+</div>
