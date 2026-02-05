@@ -7,6 +7,9 @@ class Product < ApplicationRecord
   # has_one_attached:product_picture    For single attachement
   has_many_attached:product_pictures     # For multiple attachment
 
+  # manytoone relations
+  has_many :orders
+
   # Assignment (29/01/26)
   has_one_attached:invoice
 

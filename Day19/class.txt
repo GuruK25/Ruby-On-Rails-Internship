@@ -1,0 +1,18 @@
+Associations: Associations are nothing but creating the relationship between the tables.
+
+In rails, There are 4 types of Associations
+OneToOne
+OneToMany
+ManyToOne
+ManyToMany
+
+In rails, We can establish the associations in 7 different ways.
+1. HasOne
+2. HasMany
+3. BelongsTo
+4. HasOneThrough
+5. HasManyThrough
+6. HasManyBelongsTo
+
+
+7. Polymorphic associations(different from above)
