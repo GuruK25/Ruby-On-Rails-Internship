@@ -1,0 +1,13 @@
+Coding questions
+1. Reverse a string using in-built and own logic
+2. Palindrome of a string.
+3. factorial of a number
+4. Develop a outside the class and call it.
+  All the programs are done it that type only
+
+
+
+5. Asked to check the scoped Model (product_category) data can be accessed directly using its model. (Catogory.all)
+No cannot directly access the datas, we can access those datas using scope only like Product::Category.all
+
+This is one type of establishing relationship between tables, another is using associations.

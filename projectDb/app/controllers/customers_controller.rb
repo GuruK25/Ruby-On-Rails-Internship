@@ -8,11 +8,18 @@ class CustomersController < ApplicationController
 
     @customers = Customer.all 
     # raise params.inspect  This method will not take any parameters.
+
+    # @customers = Customer.find(3)
+    # @customers = Customer.find_by(id: 3)
+    # @customers = Customer.where(id: 3)
+    
+    # rails @customers.inspect
   end
 
   # GET /customers/1 or /customers/1.json
   def show
     # raise params.inspect  This method takes id parameter. {"id" => "1"}
+    # @customers = Customer.find(params[:id])
   end
 
   # GET /customers/new

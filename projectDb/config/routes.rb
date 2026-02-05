@@ -31,8 +31,17 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get 'out_of_stock'
+      get 'get_category'
     end
   end
+
+  # namespace :products do
+  #   resources :categories do
+  #     collection do
+  #       get "get", to: "products#get_products_category"
+  #     end
+  #   end
+  # end
 
   resources :customers do
     collection do

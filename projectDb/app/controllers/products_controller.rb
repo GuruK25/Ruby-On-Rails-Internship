@@ -106,6 +106,16 @@ class ProductsController < ApplicationController
     @products = Product.out_of_stock
   end
 
+  # We can access category data using through Products. 
+  # Cannot access them directly.
+  def get_category
+    @products = Product::Category.all 
+  end
+
+  # def get_products_category
+  #   @categories = Product::Category.all
+  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
