@@ -911,7 +911,7 @@ More information: https://guides.rubyonrails.org/v7.0/active_storage_overview.ht
   <p>the domain support is defined in the application.</p>
 </div>
 
-# Day 16
+# Day 17
 
 ## Active Record
 
