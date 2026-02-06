@@ -7,9 +7,12 @@ class Product < ApplicationRecord
   # has_one_attached:product_picture    For single attachement
   has_many_attached:product_pictures     # For multiple attachment
 
-  # Tag table relation
+  # Tag table relation(habt)
   has_and_belongs_to_many :tags
                           # (p)
+
+  # Table association with offers
+  has_many :offers, through: :product_offers
 
   # manytoone relations
   has_many :orders

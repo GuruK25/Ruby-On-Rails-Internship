@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_06_053326) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_06_063751) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -83,6 +83,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_06_053326) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "discount"
+    t.string "name"
+    t.boolean "status"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "Count"
     t.string "Details"
@@ -96,6 +104,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_06_053326) do
     t.string "category_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "product_offers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "offer_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_product_offers_on_offer_id"
+    t.index ["product_id"], name: "index_product_offers_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -175,6 +192,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_06_053326) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "authors"
   add_foreign_key "orders", "products"
+  add_foreign_key "product_offers", "offers"
+  add_foreign_key "product_offers", "products"
   add_foreign_key "test4s", "test3s"
   add_foreign_key "test_twos", "test_ones"
   add_foreign_key "vendors", "users"

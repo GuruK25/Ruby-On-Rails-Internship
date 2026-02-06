@@ -910,3 +910,43 @@ More information: https://guides.rubyonrails.org/v7.0/active_storage_overview.ht
   <p>To : my_applicaiton_name@support.com</p>
   <p>the domain support is defined in the application.</p>
 </div>
+
+Day 16
+
+Active Record
+
+Active Record is a part of Model in MVC architecture.
+It is the layer of the system which is responsible for business logic and representing data.
+Active Record provides all the functionalities of Active Model along with that it also provides persisting ability into database.
+
+Object Relational Mapping: ORM is a technique that connects OOP language to tables in RDBMS.
+It mapps Class names to table names and attributes to column names.
+In rails, ActiveRecord acts as ORM.
+
+Naming conventions: Active Records uses naming convention to map the models with tables.
+BookClub is the model class, singular with first letter of each word.
+book_clubs is the table name, plural with underscores separating the words.
+
+Schema conventions: Active Record uses convention to the column names also.
+Primary key: By default, the primary key will be of integer type. The column name is id.
+
+Foriegn key: The foreign keys should be named using the convention singularised_table_name_id.
+Example: order_id, product_id, user_id.
+
+created_at, updated_at are automatically get created in the models and tables.
+
+Creation of model:
+Database tables in rails are created using migration files(not raw sql).
+
+rails generate migration CreateUsers name:string
+(In a Create... migration, Rails expects a table name, and table names are plural by convention.)
+
+Namespaced models: Namespaced models are the models which are created inside the module.
+rails generate model Product::Category
+It creates a product folder and inside that category.rb file is created.
+Warning: If there is product model inside the creating project, it will show a warning to override the model to module.
+
+In the namespaced models, the records of Category can be only accessed through Products.
+Can't access records directly from Category.
+
+Using namespaced models, we can create the relationship between tables without explicitly using associations.

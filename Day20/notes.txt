@@ -342,3 +342,399 @@ project-db(dev):030> Tag.find(3).products.map do |one| one.name end
   Product Load (1.3ms)  SELECT "products".* FROM "products" INNER JOIN "products_tags" ON "products"."id" = "products_tags"."product_id" WHERE "products_tags"."tag_id" = 3 /*application='ProjectDb'*/
 => ["Fantastic Rubber Computer", "Durable Silk Watch"]
 project-db(dev):031>
+
+
+
+for hasManyThrough
+
+create offer model
+
+create third model
+
+PS C:\Users\gurub\OneDrive\Desktop\RailsWork\guru\Ruby-On-Rails-Internship> cd projectDb
+PS C:\Users\gurub\OneDrive\Desktop\RailsWork\guru\Ruby-On-Rails-Internship\projectDb> rails generate model Offer name:string status:boolean discount:integer 
+      invoke  active_record
+      create    db/migrate/20260206063004_create_offers.rb
+      create    app/models/offer.rb
+      invoke    test_unit
+      create      test/models/offer_test.rb
+      create      test/fixtures/offers.yml
+PS C:\Users\gurub\OneDrive\Desktop\RailsWork\guru\Ruby-On-Rails-Internship\projectDb> rails db:migrate
+== 20260206063004 CreateOffers: migrating =====================================
+-- create_table(:offers)
+   -> 0.0432s
+== 20260206063004 CreateOffers: migrated (0.0442s) ============================
+
+PS C:\Users\gurub\OneDrive\Desktop\RailsWork\guru\Ruby-On-Rails-Internship\projectDb> rails generate model ProductOffer product:references offer:references
+      invoke  active_record
+      create    db/migrate/20260206063751_create_product_offers.rb
+      create    app/models/product_offer.rb
+      invoke    test_unit
+      create      test/models/product_offer_test.rb
+      create      test/fixtures/product_offers.yml
+PS C:\Users\gurub\OneDrive\Desktop\RailsWork\guru\Ruby-On-Rails-Internship\projectDb> rails db:migrate
+== 20260206063751 CreateProductOffers: migrating ==============================
+-- create_table(:product_offers)
+   -> 0.0412s
+== 20260206063751 CreateProductOffers: migrated (0.0418s) =====================
+
+PS C:\Users\gurub\OneDrive\Desktop\RailsWork\guru\Ruby-On-Rails-Internship\projectDb> rails console
+C:/Users/gurub/.local/share/gem/ruby/3.4.0/gems/reline-0.6.3/lib/reline/io/windows.rb:1: warning: C:/Ruby34-x64/lib/ruby/3.4.0/fiddle/import.rb is found in fiddle, which will no longer be part of the default gems starting from Ruby 4.0.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.6.3 to request adding fiddle into its gemspec.
+Loading development environment (Rails 8.1.2)
+project-db(dev):001> Offer.create(name:"Divali", status:true, discount:30)
+  TRANSACTION (0.1ms)  BEGIN /*application='ProjectDb'*/
+  Offer Create (6.1ms)  INSERT INTO "offers" ("name", "status", "discount", "created_at", "updated_at") VALUES ('Divali', TRUE, 30, '2026-02-06 06:49:21.730490', '2026-02-06 06:49:21.730490') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (0.8ms)  COMMIT /*application='ProjectDb'*/
+=>
+#<Offer:0x00000225c3dbfa20
+ id: 1,
+ name: "Divali",
+ status: true,
+ discount: 30,
+ created_at: "2026-02-06 06:49:21.730490000 +0000",
+ updated_at: "2026-02-06 06:49:21.730490000 +0000">
+project-db(dev):002> Offer.create(name:"Dussarah", status:false, discount:25)
+  TRANSACTION (0.4ms)  BEGIN /*application='ProjectDb'*/
+  Offer Create (1.2ms)  INSERT INTO "offers" ("name", "status", "discount", "created_at", "updated_at") VALUES ('Dussarah', FALSE, 25, '2026-02-06 06:49:46.261638', '2026-02-06 06:49:46.261638') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.1ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<Offer:0x00000225c6a6dae0
+ id: 2,
+ name: "Dussarah",
+ status: false,
+ discount: 25,
+ created_at: "2026-02-06 06:49:46.261638000 +0000",
+ updated_at: "2026-02-06 06:49:46.261638000 +0000">
+project-db(dev):003> Offer.create(name:"Independence day", status:true, discount:23)
+  TRANSACTION (0.3ms)  BEGIN /*application='ProjectDb'*/
+  Offer Create (0.8ms)  INSERT INTO "offers" ("name", "status", "discount", "created_at", "updated_at") VALUES ('Independence day', TRUE, 23, '2026-02-06 06:50:11.021154', '2026-02-06 06:50:11.021154') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.1ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<Offer:0x00000225c6132a98
+ id: 3,
+ name: "Independence day",
+ status: true,
+ discount: 23,
+ created_at: "2026-02-06 06:50:11.021154000 +0000",
+ updated_at: "2026-02-06 06:50:11.021154000 +0000">
+project-db(dev):004> Offer.create(name:"Ganesha chaturthi", status:false, discount:3)
+  TRANSACTION (0.3ms)  BEGIN /*application='ProjectDb'*/
+  Offer Create (0.9ms)  INSERT INTO "offers" ("name", "status", "discount", "created_at", "updated_at") VALUES ('Ganesha chaturthi', FALSE, 3, '2026-02-06 06:50:42.403104', '2026-02-06 06:50:42.403104') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.2ms)  COMMIT /*application='ProjectDb'*/
+=>
+#<Offer:0x00000225c6aec318
+ id: 4,
+ name: "Ganesha chaturthi",
+ status: false,
+ discount: 3,
+ created_at: "2026-02-06 06:50:42.403104000 +0000",
+ updated_at: "2026-02-06 06:50:42.403104000 +0000">
+project-db(dev):005> Offer.create(name:"Chrismas", status:false, discount:0)
+  TRANSACTION (0.2ms)  BEGIN /*application='ProjectDb'*/
+  Offer Create (0.7ms)  INSERT INTO "offers" ("name", "status", "discount", "created_at", "updated_at") VALUES ('Chrismas', FALSE, 0, '2026-02-06 06:51:01.470491', '2026-02-06 06:51:01.470491') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.2ms)  COMMIT /*application='ProjectDb'*/
+=>
+#<Offer:0x00000225c6b6d210
+ id: 5,
+ name: "Chrismas",
+ status: false,
+ discount: 0,
+ created_at: "2026-02-06 06:51:01.470491000 +0000",
+ updated_at: "2026-02-06 06:51:01.470491000 +0000">
+project-db(dev):006> product = Product.find(13)
+  Product Load (1.6ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 13 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x00000225c5f146a8
+...
+project-db(dev):007> product
+=> 
+#<Product:0x00000225c5f146a8
+ id: 13,
+ created_at: "2026-01-21 17:19:15.534383000 +0000",
+ description: "This is sample description (faker example)",
+ is_active: true,
+ name: "Fantastic Silk Gloves",
+ price: 0.22e3,
+ stock: 86,
+ updated_at: "2026-01-21 17:19:15.534383000 +0000",
+ email: nil>
+project-db(dev):008> product.offers<<Offer.find(1)
+(project-db):8:in '<main>': Could not find the association :product_offers in model Product (ActiveRecord::HasManyThroughAssociationNotFoundError)
+Did you mean?  product_pictures_blobs
+project-db(dev):009> exit
+PS C:\Users\gurub\OneDrive\Desktop\RailsWork\guru\Ruby-On-Rails-Internship\projectDb> rails console
+C:/Users/gurub/.local/share/gem/ruby/3.4.0/gems/reline-0.6.3/lib/reline/io/windows.rb:1: warning: C:/Ruby34-x64/lib/ruby/3.4.0/fiddle/import.rb is found in fiddle, which will no longer be part of the default gems starting from Ruby 4.0.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.6.3 to request adding fiddle into its gemspec.
+Loading development environment (Rails 8.1.2)
+project-db(dev):001> product.offers<<Offer.find(1)
+(project-db):1:in '<main>': undefined local variable or method 'product' for main (NameError)
+Did you mean?  proc
+project-db(dev):002> product = Product.find(13)
+  Product Load (0.8ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 13 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x000001b88f91e198
+...
+project-db(dev):003> product.offers<<Offer.find(1)
+(project-db):3:in '<main>': Could not find the association :product_offers in model Product (ActiveRecord::HasManyThroughAssociationNotFoundError)
+Did you mean?  product_pictures_blobs
+project-db(dev):004> product.product_offers
+(project-db):4:in '<main>': undefined method 'product_offers' for an instance of Product (NoMethodError)
+Did you mean?  product_pictures
+project-db(dev):005> exit
+PS C:\Users\gurub\OneDrive\Desktop\RailsWork\guru\Ruby-On-Rails-Internship\projectDb> rails console
+C:/Users/gurub/.local/share/gem/ruby/3.4.0/gems/reline-0.6.3/lib/reline/io/windows.rb:1: warning: C:/Ruby34-x64/lib/ruby/3.4.0/fiddle/import.rb is found in fiddle, which will no longer be part of the default gems starting from Ruby 4.0.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.6.3 to request adding fiddle into its gemspec.
+Loading development environment (Rails 8.1.2)
+project-db(dev):001> product = Product.find(13)
+  Product Load (0.6ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 13 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x000001906fc55160
+...
+project-db(dev):002> product.product_offers
+(project-db):2:in '<main>': undefined method 'product_offers' for an instance of Product (NoMethodError)
+Did you mean?  product_pictures
+project-db(dev):003> ProductOffer.create(product_id:14, offer_id:1)
+  TRANSACTION (0.2ms)  BEGIN /*application='ProjectDb'*/
+  Product Load (1.4ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 14 LIMIT 1 /*application='ProjectDb'*/
+  Offer Load (1.2ms)  SELECT "offers".* FROM "offers" WHERE "offers"."id" = 1 LIMIT 1 /*application='ProjectDb'*/
+  ProductOffer Create (5.0ms)  INSERT INTO "product_offers" ("product_id", "offer_id", "created_at", "updated_at") VALUES (14, 1, '2026-02-06 07:01:55.562847', '2026-02-06 07:01:55.562847') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (1.7ms)  COMMIT /*application='ProjectDb'*/
+=>
+#<ProductOffer:0x00000190691ac4a8
+ id: 1,
+ product_id: 14,
+ offer_id: 1,
+ created_at: "2026-02-06 07:01:55.562847000 +0000",
+ updated_at: "2026-02-06 07:01:55.562847000 +0000">
+project-db(dev):004> ProductOffer.create(product_id:13, offer_id:2)
+  TRANSACTION (0.2ms)  BEGIN /*application='ProjectDb'*/
+  Product Load (0.8ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 13 LIMIT 1 /*application='ProjectDb'*/
+  Offer Load (0.2ms)  SELECT "offers".* FROM "offers" WHERE "offers"."id" = 2 LIMIT 1 /*application='ProjectDb'*/
+  ProductOffer Create (0.3ms)  INSERT INTO "product_offers" ("product_id", "offer_id", "created_at", "updated_at") VALUES (13, 2, '2026-02-06 07:02:10.718483', '2026-02-06 07:02:10.718483') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.1ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<ProductOffer:0x000001906f848220
+ id: 2,
+ product_id: 13,
+ offer_id: 2,
+ created_at: "2026-02-06 07:02:10.718483000 +0000",
+ updated_at: "2026-02-06 07:02:10.718483000 +0000">
+project-db(dev):005> ProductOffer.create(product_id:15, offer_id:3)
+  TRANSACTION (0.2ms)  BEGIN /*application='ProjectDb'*/
+  Product Load (0.9ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 15 LIMIT 1 /*application='ProjectDb'*/
+  Offer Load (0.3ms)  SELECT "offers".* FROM "offers" WHERE "offers"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+  ProductOffer Create (0.5ms)  INSERT INTO "product_offers" ("product_id", "offer_id", "created_at", "updated_at") VALUES (15, 3, '2026-02-06 07:02:18.595488', '2026-02-06 07:02:18.595488') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.2ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<ProductOffer:0x00000190693b2d10
+ id: 3,
+ product_id: 15,
+ offer_id: 3,
+ created_at: "2026-02-06 07:02:18.595488000 +0000",
+ updated_at: "2026-02-06 07:02:18.595488000 +0000">
+project-db(dev):006> ProductOffer.create(product_id:16, offer_id:4)
+  TRANSACTION (0.2ms)  BEGIN /*application='ProjectDb'*/
+  Product Load (0.7ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 16 LIMIT 1 /*application='ProjectDb'*/
+  Offer Load (0.2ms)  SELECT "offers".* FROM "offers" WHERE "offers"."id" = 4 LIMIT 1 /*application='ProjectDb'*/
+  ProductOffer Create (0.3ms)  INSERT INTO "product_offers" ("product_id", "offer_id", "created_at", "updated_at") VALUES (16, 4, '2026-02-06 07:02:28.391312', '2026-02-06 07:02:28.391312') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.2ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<ProductOffer:0x000001906f840b60
+ id: 4,
+ product_id: 16,
+ offer_id: 4,
+ created_at: "2026-02-06 07:02:28.391312000 +0000",
+ updated_at: "2026-02-06 07:02:28.391312000 +0000">
+project-db(dev):007> ProductOffer.create(product_id:17, offer_id:1)
+  TRANSACTION (0.2ms)  BEGIN /*application='ProjectDb'*/
+  Product Load (1.0ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 17 LIMIT 1 /*application='ProjectDb'*/
+  Offer Load (0.2ms)  SELECT "offers".* FROM "offers" WHERE "offers"."id" = 1 LIMIT 1 /*application='ProjectDb'*/
+  ProductOffer Create (0.4ms)  INSERT INTO "product_offers" ("product_id", "offer_id", "created_at", "updated_at") VALUES (17, 1, '2026-02-06 07:02:50.068872', '2026-02-06 07:02:50.068872') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.3ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<ProductOffer:0x000001906cf83998
+ id: 5,
+ product_id: 17,
+ offer_id: 1,
+ created_at: "2026-02-06 07:02:50.068872000 +0000",
+ updated_at: "2026-02-06 07:02:50.068872000 +0000">
+project-db(dev):008> ProductOffer.create(product_id:17, offer_id:3)
+  TRANSACTION (0.2ms)  BEGIN /*application='ProjectDb'*/
+  Product Load (0.8ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 17 LIMIT 1 /*application='ProjectDb'*/
+  Offer Load (0.3ms)  SELECT "offers".* FROM "offers" WHERE "offers"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+  ProductOffer Create (0.5ms)  INSERT INTO "product_offers" ("product_id", "offer_id", "created_at", "updated_at") VALUES (17, 3, '2026-02-06 07:03:06.497414', '2026-02-06 07:03:06.497414') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.4ms)  COMMIT /*application='ProjectDb'*/
+=>
+#<ProductOffer:0x000001906cf8d218
+ id: 6,
+ product_id: 17,
+ offer_id: 3,
+ created_at: "2026-02-06 07:03:06.497414000 +0000",
+ updated_at: "2026-02-06 07:03:06.497414000 +0000">
+project-db(dev):009> ProductOffer.create(product_id:14, offer_id:3)
+  TRANSACTION (0.2ms)  BEGIN /*application='ProjectDb'*/
+  Product Load (0.8ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 14 LIMIT 1 /*application='ProjectDb'*/
+  Offer Load (0.3ms)  SELECT "offers".* FROM "offers" WHERE "offers"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+  ProductOffer Create (0.4ms)  INSERT INTO "product_offers" ("product_id", "offer_id", "created_at", "updated_at") VALUES (14, 3, '2026-02-06 07:03:16.800928', '2026-02-06 07:03:16.800928') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.3ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<ProductOffer:0x000001906cf8e9d8
+ id: 7,
+ product_id: 14,
+ offer_id: 3,
+ created_at: "2026-02-06 07:03:16.800928000 +0000",
+ updated_at: "2026-02-06 07:03:16.800928000 +0000">
+project-db(dev):010> product.find(13).offers.map do |every| every.to_s end
+(project-db):10:in '<main>': undefined method 'find' for an instance of Product (NoMethodError)
+project-db(dev):011> product = Product.find(13)
+  Product Load (0.6ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 13 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x000001906ef97a90
+...
+project-db(dev):012> product.offer.map do |obj| obj end
+(project-db):12:in '<main>': undefined method 'offer' for an instance of Product (NoMethodError)
+Did you mean?  offers
+project-db(dev):013> product.offers.map do |obj| obj.to_s end
+(project-db):13:in '<main>': Could not find the association :product_offers in model Product (ActiveRecord::HasManyThroughAssociationNotFoundError)
+Did you mean?  product_pictures_blobs
+project-db(dev):014> product.product_offers
+(project-db):14:in '<main>': undefined method 'product_offers' for an instance of Product (NoMethodError)
+Did you mean?  product_pictures
+project-db(dev):015> product.product_offers. do |obj| obj.to_s end
+C:/Users/gurub/.local/share/gem/ruby/3.4.0/gems/irb-1.16.0/lib/irb.rb:415:in 'full_message': (project-db):15: syntax errors found (SyntaxError)
+> 15 | ... end
+     |     ^~~ unexpected 'end', ignoring it
+     |     ^~~ unexpected 'end', expecting end-of-input
+
+project-db(dev):016> product.product_offers.map do |obj| obj.to_s end
+(project-db):16:in '<main>': undefined method 'product_offers' for an instance of Product (NoMethodError)
+Did you mean?  product_pictures
+project-db(dev):017> product.products_offers.map do |obj| obj.to_s end
+(project-db):17:in '<main>': undefined method 'products_offers' for an instance of Product (NoMethodError)
+Did you mean?  product_pictures
+project-db(dev):018> product.productoffers.map do |obj| obj.to_s end
+(project-db):18:in '<main>': undefined method 'productoffers' for an instance of Product (NoMethodError)
+Did you mean?  product_pictures
+project-db(dev):019> 
+
+
+
+Try destroy method working
+pass attribute :> dependent: :destroy
+
+
+before adding dependent: :destroy:
+project-db(dev):003> User.find(3).delete
+  User Load (0.8ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+  User Destroy (3.6ms)  DELETE FROM "users" WHERE "users"."id" = 3 /*application='ProjectDb'*/
+(project-db):3:in '<main>': PG::ForeignKeyViolation: ERROR:  update or delete on table "users" violates foreign key constraint "fk_rails_827f84e5b7" on table "vendors" (ActiveRecord::InvalidForeignKey)
+DETAIL:  Key (id)=(3) is still referenced from table "vendors".
+
+C:/Users/gurub/.local/share/gem/ruby/3.4.0/gems/activerecord-8.1.2/lib/active_record/connection_adapters/postgresql/database_statements.rb:167:in 'PG::Connection#exec': ERROR:  update or delete on table "users" violates foreign key constraint "fk_rails_827f84e5b7" on table "vendors" (PG::ForeignKeyViolation)
+DETAIL:  Key (id)=(3) is still referenced from table "vendors".
+
+
+
+
+project-db(dev):001> product = Product.find(13)
+  Product Load (5.2ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 13 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x0000029ef384e420
+...
+project-db(dev):002> product
+=> 
+#<Product:0x0000029ef384e420
+ id: 13,
+ created_at: "2026-01-21 17:19:15.534383000 +0000",
+ description: "This is sample description (faker example)",
+ is_active: true,
+ name: "Fantastic Silk Gloves",
+ price: 0.22e3,
+ stock: 86,
+ updated_at: "2026-01-21 17:19:15.534383000 +0000",
+ email: nil>
+project-db(dev):003> user_three = User.find(3)
+  User Load (2.8ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<User:0x0000029ef43eb300
+...
+project-db(dev):004> user_three
+=> 
+#<User:0x0000029ef43eb300
+ id: 3,
+ name: "user3",
+ email: "[FILTERED]",
+ created_at: "2026-02-05 05:38:59.050954000 +0000",
+ updated_at: "2026-02-05 05:38:59.050954000 +0000">
+project-db(dev):005> vendor=Vendor.find(7)
+  Vendor Load (3.6ms)  SELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = 7 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Vendor:0x0000029ef3a8f158
+...
+project-db(dev):006> vendor
+=> 
+#<Vendor:0x0000029ef3a8f158
+ id: 7,
+ brand_name: "brand3",
+ location: "loc3",
+ created_at: "2026-02-05 07:11:41.679330000 +0000",
+ updated_at: "2026-02-05 07:11:41.679330000 +0000",
+ user_id: 3>
+project-db(dev):007> vendor.user
+  User Load (0.9ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<User:0x0000029eee7c3e88
+ id: 3,
+ name: "user3",
+ email: "[FILTERED]",
+ created_at: "2026-02-05 05:38:59.050954000 +0000",
+ updated_at: "2026-02-05 05:38:59.050954000 +0000">
+project-db(dev):008> vendor.user.destroy
+  TRANSACTION (0.5ms)  BEGIN /*application='ProjectDb'*/
+  Vendor Destroy (9.3ms)  DELETE FROM "vendors" WHERE "vendors"."id" = 7 /*application='ProjectDb'*/
+  User Destroy (5.3ms)  DELETE FROM "users" WHERE "users"."id" = 3 /*application='ProjectDb'*/
+  TRANSACTION (2.5ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<User:0x0000029eee7c3e88
+ id: 3,
+ name: "user3",
+ email: "[FILTERED]",
+ created_at: "2026-02-05 05:38:59.050954000 +0000",
+ updated_at: "2026-02-05 05:38:59.050954000 +0000">
+project-db(dev):009>
+
+
+
+Deleted user(parent) and vendor(child) also deleted.
+
+project-db(dev):001> user = User.find(1)
+  User Load (1.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<User:0x000001f3635219c8
+...
+project-db(dev):002> user
+=> 
+#<User:0x000001f3635219c8
+ id: 1,
+ name: "user1",
+ email: "[FILTERED]",
+ created_at: "2026-02-05 05:37:50.766397000 +0000",
+ updated_at: "2026-02-05 05:37:50.766397000 +0000">
+project-db(dev):003> user.destroy
+  TRANSACTION (0.4ms)  BEGIN /*application='ProjectDb'*/
+  Vendor Load (4.8ms)  SELECT "vendors".* FROM "vendors" WHERE "vendors"."user_id" = 1 LIMIT 1 /*application='ProjectDb'*/
+  Vendor Destroy (1.3ms)  DELETE FROM "vendors" WHERE "vendors"."id" = 5 /*application='ProjectDb'*/
+  User Destroy (0.9ms)  DELETE FROM "users" WHERE "users"."id" = 1 /*application='ProjectDb'*/
+  TRANSACTION (4.9ms)  COMMIT /*application='ProjectDb'*/
+=>
+#<User:0x000001f3635219c8
+ id: 1,
+ name: "user1",
+ email: "[FILTERED]",
+ created_at: "2026-02-05 05:37:50.766397000 +0000",
+ updated_at: "2026-02-05 05:37:50.766397000 +0000">
+project-db(dev):004>
