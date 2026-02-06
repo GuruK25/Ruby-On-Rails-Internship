@@ -945,7 +945,9 @@ created_at, updated_at are automatically get created in the models and tables.
 
 - Database tables in rails are created using migration files(not raw sql).
 
+```bash
 `rails generate migration CreateUsers name:string`
+```
 
 > Note: (In a Create... migration, Rails expects a table name, and table names are plural by convention.)
 
