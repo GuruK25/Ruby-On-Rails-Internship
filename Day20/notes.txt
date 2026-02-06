@@ -1,0 +1,344 @@
+While creating only table use -> migration command
+To create table along with model -> model
+
+
+product = Product.find(6)
+product.tags<<Tag.last
+        (p)   (s)
+The above statement is trying to fetch the last record from the Tag model and assign/add it to Product model which have multiple(p) tags.
+<< : append operator
+
+oject-db(dev):001> Tags.create(name:"Best seller", desc:"This item is best seller")
+(project-db):1:in '<main>': uninitialized constant Tags (NameError)
+project-db(dev):002> Tag.create(name:"Best seller", desc:"This item is best seller")
+  TRANSACTION (0.4ms)  BEGIN /*application='ProjectDb'*/
+  Tag Create (5.5ms)  INSERT INTO "tags" ("name", "desc", "created_at", "updated_at") VALUES ('Best seller', 'This item is best seller', '2026-02-06 05:36:25.997373', '2026-02-06 05:36:25.997373') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (2.0ms)  COMMIT /*application='ProjectDb'*/
+=>
+#<Tag:0x0000013fa27ca6e0
+ id: 1,
+ name: "Best seller",
+ desc: "This item is best seller",
+ created_at: "2026-02-06 05:36:25.997373000 +0000",
+ updated_at: "2026-02-06 05:36:25.997373000 +0000">
+project-db(dev):003> Tag.create(name:"Vegan", desc:"This item is 100% vegan")
+  TRANSACTION (0.4ms)  BEGIN /*application='ProjectDb'*/
+  Tag Create (5.2ms)  INSERT INTO "tags" ("name", "desc", "created_at", "updated_at") VALUES ('Vegan', 'This item is 100% vegan', '2026-02-06 05:36:49.313973', '2026-02-06 05:36:49.313973') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (1.2ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<Tag:0x0000013fa2906cc0
+ id: 2,
+ name: "Vegan",
+ desc: "This item is 100% vegan",
+ created_at: "2026-02-06 05:36:49.313973000 +0000",
+ updated_at: "2026-02-06 05:36:49.313973000 +0000">
+project-db(dev):004> Tag.create(name:"Special offer", desc:"This item is selling at special offer")
+  TRANSACTION (0.3ms)  BEGIN /*application='ProjectDb'*/
+  Tag Create (3.3ms)  INSERT INTO "tags" ("name", "desc", "created_at", "updated_at") VALUES ('Special offer', 'This item is selling at special offer', '2026-02-06 05:37:22.778767', '2026-02-06 05:37:22.778767') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (3.6ms)  COMMIT /*application='ProjectDb'*/
+=> 
+#<Tag:0x0000013f9c98fdc8
+ id: 3,
+ name: "Special offer",
+ desc: "This item is selling at special offer",
+ created_at: "2026-02-06 05:37:22.778767000 +0000",
+ updated_at: "2026-02-06 05:37:22.778767000 +0000">
+project-db(dev):005> Tag.create(name:"Festival sales", desc:"This item have upto 30% offer")
+  TRANSACTION (0.5ms)  BEGIN /*application='ProjectDb'*/
+  Tag Create (2.4ms)  INSERT INTO "tags" ("name", "desc", "created_at", "updated_at") VALUES ('Festival sales', 'This item have upto 30% offer', '2026-02-06 05:37:55.958477', '2026-02-06 05:37:55.958477') RETURNING "id" /*application='ProjectDb'*/
+  TRANSACTION (4.0ms)  COMMIT /*application='ProjectDb'*/
+=>
+#<Tag:0x0000013fa319c948
+ id: 4,
+ name: "Festival sales",
+ desc: "This item have upto 30% offer",
+ created_at: "2026-02-06 05:37:55.958477000 +0000",
+ updated_at: "2026-02-06 05:37:55.958477000 +0000">
+project-db(dev):006> Tag.all
+  Tag Load (0.9ms)  SELECT "tags".* FROM "tags" /* loading for pp */ LIMIT 11 /*application='ProjectDb'*/
+=> 
+[#<Tag:0x0000013fa290bf40
+  id: 1,
+  name: "Best seller",
+  desc: "This item is best seller",
+  created_at: "2026-02-06 05:36:25.997373000 +0000",
+  updated_at: "2026-02-06 05:36:25.997373000 +0000">,
+ #<Tag:0x0000013fa290be00
+  id: 2,
+  name: "Vegan",
+  desc: "This item is 100% vegan",
+  created_at: "2026-02-06 05:36:49.313973000 +0000",
+  updated_at: "2026-02-06 05:36:49.313973000 +0000">,
+ #<Tag:0x0000013fa290bcc0
+  id: 3,
+  name: "Special offer",
+  desc: "This item is selling at special offer",
+  created_at: "2026-02-06 05:37:22.778767000 +0000",
+  updated_at: "2026-02-06 05:37:22.778767000 +0000">,
+ #<Tag:0x0000013fa290bb80
+  id: 4,
+  name: "Festival sales",
+  desc: "This item have upto 30% offer",
+  created_at: "2026-02-06 05:37:55.958477000 +0000",
+  updated_at: "2026-02-06 05:37:55.958477000 +0000">]
+project-db(dev):007> product = Product.last
+  Product Load (6.5ms)  SELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x0000013fa2cd47f8
+...
+project-db(dev):008> product
+=> 
+#<Product:0x0000013fa2cd47f8
+ id: 37,
+ created_at: "2026-01-30 07:47:08.543690000 +0000",
+ description: "kjhgj",
+ is_active: true,
+ name: "abc",
+ price: 0.1234e4,
+ stock: 23,
+ updated_at: "2026-01-30 07:47:08.580467000 +0000",
+ email: "[FILTERED]">
+project-db(dev):009> product = Product.find(6)
+  Product Load (1.6ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 6 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x0000013fa3067460
+...
+project-db(dev):010> product
+=>
+#<Product:0x0000013fa3067460
+ id: 6,
+ created_at: "2026-01-21 17:19:15.499392000 +0000",
+ description: "This is sample description (faker example)",
+ is_active: false,
+ name: "Incredible Iron Gloves",
+ price: 0.264e3,
+ stock: 82,
+ updated_at: "2026-01-21 17:19:15.499392000 +0000",
+ email: nil>
+project-db(dev):011> exit
+PS C:\Users\gurub\OneDrive\Desktop\RailsWork\guru\Ruby-On-Rails-Internship\projectDb> rails console
+C:/Users/gurub/.local/share/gem/ruby/3.4.0/gems/reline-0.6.3/lib/reline/io/windows.rb:1: warning: C:/Ruby34-x64/lib/ruby/3.4.0/fiddle/import.rb is found in fiddle, which will no longer be part of the default gems starting from Ruby 4.0.0.
+You can add fiddle to your Gemfile or gemspec to silence this warning.
+Also please contact the author of reline-0.6.3 to request adding fiddle into its gemspec.
+Loading development environment (Rails 8.1.2)
+project-db(dev):001> product
+(project-db):1:in '<main>': undefined local variable or method 'product' for main (NameError)
+Did you mean?  proc
+project-db(dev):002> product = Product.find(6)
+  Product Load (2.7ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 6 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x00000271b4142f30
+...
+project-db(dev):003> product
+=> 
+#<Product:0x00000271b4142f30
+ id: 6,
+ created_at: "2026-01-21 17:19:15.499392000 +0000",
+ description: "This is sample description (faker example)",
+ is_active: false,
+ name: "Incredible Iron Gloves",
+ price: 0.264e3,
+ stock: 82,
+ updated_at: "2026-01-21 17:19:15.499392000 +0000",
+ email: nil>
+project-db(dev):004> product.tags<<Tag.last
+  Tag Load (3.3ms)  SELECT "tags".* FROM "tags" ORDER BY "tags"."id" DESC LIMIT 1 /*application='ProjectDb'*/
+  TRANSACTION (0.6ms)  BEGIN /*application='ProjectDb'*/
+  Product::HABTM_Tags Create (2.0ms)  INSERT INTO "products_tags" ("product_id", "tag_id") VALUES (6, 4) /*application='ProjectDb'*/
+  TRANSACTION (2.0ms)  COMMIT /*application='ProjectDb'*/
+  Tag Load (1.4ms)  SELECT "tags".* FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 6 /* loading for pp */ LIMIT 11 /*application='ProjectDb'*/
+=> 
+[#<Tag:0x00000271b3533528
+  id: 4,
+  name: "Festival sales",
+  desc: "This item have upto 30% offer",
+  created_at: "2026-02-06 05:37:55.958477000 +0000",
+  updated_at: "2026-02-06 05:37:55.958477000 +0000">]
+project-db(dev):005> product = Product.find(8)
+  Product Load (1.0ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 8 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x00000271ae50c090
+...
+project-db(dev):006> product.tags<<Tag.find(2)
+  Tag Load (1.5ms)  SELECT "tags".* FROM "tags" WHERE "tags"."id" = 2 LIMIT 1 /*application='ProjectDb'*/
+  TRANSACTION (0.6ms)  BEGIN /*application='ProjectDb'*/
+  Product::HABTM_Tags Create (1.5ms)  INSERT INTO "products_tags" ("product_id", "tag_id") VALUES (8, 2) /*application='ProjectDb'*/
+  TRANSACTION (3.6ms)  COMMIT /*application='ProjectDb'*/
+  Tag Load (1.0ms)  SELECT "tags".* FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 8 /* loading for pp */ LIMIT 11 /*application='ProjectDb'*/
+=> 
+[#<Tag:0x00000271ae5053d0
+  id: 2,
+  name: "Vegan",
+  desc: "This item is 100% vegan",
+  created_at: "2026-02-06 05:36:49.313973000 +0000",
+  updated_at: "2026-02-06 05:36:49.313973000 +0000">]
+project-db(dev):007> product.find(6).tag
+(project-db):7:in '<main>': undefined method 'find' for an instance of Product (NoMethodError)
+project-db(dev):008> Product.find(6).tag
+  Product Load (1.6ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 6 LIMIT 1 /*application='ProjectDb'*/
+(project-db):8:in '<main>': undefined method 'tag' for an instance of Product (NoMethodError)
+Did you mean?  tags
+               tap
+project-db(dev):009> Product.find(6).tags
+  Product Load (0.9ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 6 LIMIT 1 /*application='ProjectDb'*/
+  Tag Load (0.5ms)  SELECT "tags".* FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 6 /* loading for pp */ LIMIT 11 /*application='ProjectDb'*/
+=> 
+[#<Tag:0x00000271ae464750
+  id: 4,
+  name: "Festival sales",
+  desc: "This item have upto 30% offer",
+  created_at: "2026-02-06 05:37:55.958477000 +0000",
+  updated_at: "2026-02-06 05:37:55.958477000 +0000">]
+project-db(dev):010> Poduct.find(6).tags.name
+(project-db):10:in '<main>': uninitialized constant Poduct (NameError)
+Did you mean?  Product
+project-db(dev):011> Product.find(6).tags.name
+  Product Load (1.0ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 6 LIMIT 1 /*application='ProjectDb'*/
+=> "Tag"
+project-db(dev):012> Product.find(6).tags[0].name
+  Product Load (1.0ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 6 LIMIT 1 /*application='ProjectDb'*/
+  Tag Load (1.1ms)  SELECT "tags".* FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 6 /*application='ProjectDb'*/
+=> "Festival sales"
+project-db(dev):013> Product.find(6).tags.pluck(:name)
+  Product Load (1.3ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 6 LIMIT 1 /*application='ProjectDb'*/
+  Tag Pluck (0.9ms)  SELECT "tags"."name" FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 6 /*application='ProjectDb'*/
+=> ["Festival sales"]
+project-db(dev):014> Product.find(6).tags.select do |one| {one.name} end
+C:/Users/gurub/.local/share/gem/ruby/3.4.0/gems/irb-1.16.0/lib/irb.rb:415:in 'full_message': (project-db):14: syntax errors found (SyntaxError)
+> 14 | ... } end
+     |     ^ unexpected '}'; expected a value in the hash literal
+     |     ^ expected a `=>` between the hash key and value
+
+project-db(dev):015> Product.find(6).tags.select do |one| one.name end
+  Product Load (1.1ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 6 LIMIT 1 /*application='ProjectDb'*/
+  Tag Load (0.8ms)  SELECT "tags".* FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 6 /*application='ProjectDb'*/
+=>
+[#<Tag:0x00000271ae549620
+  id: 4,
+  name: "Festival sales",
+  desc: "This item have upto 30% offer",
+  created_at: "2026-02-06 05:37:55.958477000 +0000",
+  updated_at: "2026-02-06 05:37:55.958477000 +0000">]
+project-db(dev):016> product = Product.find(8)
+  Product Load (1.1ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 8 LIMIT 1 /*application='ProjectDb'*/
+=>
+#<Product:0x00000271ae506910
+...
+project-db(dev):017> product.tags<<Tag.find(1)
+  Tag Load (0.8ms)  SELECT "tags".* FROM "tags" WHERE "tags"."id" = 1 LIMIT 1 /*application='ProjectDb'*/
+  TRANSACTION (0.3ms)  BEGIN /*application='ProjectDb'*/
+  Product::HABTM_Tags Create (4.6ms)  INSERT INTO "products_tags" ("product_id", "tag_id") VALUES (8, 1) /*application='ProjectDb'*/
+  TRANSACTION (1.2ms)  COMMIT /*application='ProjectDb'*/
+  Tag Load (1.4ms)  SELECT "tags".* FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 8 /* loading for pp */ LIMIT 11 /*application='ProjectDb'*/
+=> 
+[#<Tag:0x00000271ae509d90
+  id: 1,
+  name: "Best seller",
+  desc: "This item is best seller",
+  created_at: "2026-02-06 05:36:25.997373000 +0000",
+  updated_at: "2026-02-06 05:36:25.997373000 +0000">,
+ #<Tag:0x00000271ae509390
+  id: 2,
+  name: "Vegan",
+  desc: "This item is 100% vegan",
+  created_at: "2026-02-06 05:36:49.313973000 +0000",
+  updated_at: "2026-02-06 05:36:49.313973000 +0000">]
+project-db(dev):018> product = Product.find(8)
+  Product Load (1.3ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 8 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x00000271ae545020
+...
+project-db(dev):019> product.select do |one| one.name end
+(project-db):19:in '<main>': private method 'select' called for an instance of Product (NoMethodError)
+project-db(dev):020> product.tags.select do |one| one.name end
+  Tag Load (1.4ms)  SELECT "tags".* FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 8 /*application='ProjectDb'*/
+=> 
+[#<Tag:0x00000271ae502590
+  id: 1,
+  name: "Best seller",
+  desc: "This item is best seller",
+  created_at: "2026-02-06 05:36:25.997373000 +0000",
+  updated_at: "2026-02-06 05:36:25.997373000 +0000">,
+ #<Tag:0x00000271ae502450
+  id: 2,
+  name: "Vegan",
+  desc: "This item is 100% vegan",
+  created_at: "2026-02-06 05:36:49.313973000 +0000",
+  updated_at: "2026-02-06 05:36:49.313973000 +0000">]
+project-db(dev):021>
+
+=>
+[#<Tag:0x00000271ae502590
+  id: 1,
+  name: "Best seller",
+  desc: "This item is best seller",
+  created_at: "2026-02-06 05:36:25.997373000 +0000",
+  updated_at: "2026-02-06 05:36:25.997373000 +0000">,
+ #<Tag:0x00000271ae502450
+  id: 2,
+  name: "Vegan",
+  desc: "This item is 100% vegan",
+  created_at: "2026-02-06 05:36:49.313973000 +0000",
+  updated_at: "2026-02-06 05:36:49.313973000 +0000">]
+project-db(dev):021> product.tags.map do |one| one.name end
+=> ["Best seller", "Vegan"]
+project-db(dev):022>
+
+ updated_at: "2026-02-06 05:37:22.778767000 +0000">
+project-db(dev):024> product = Product.find(4)
+  Product Load (4.4ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 4 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x00000271ae500010
+...
+project-db(dev):025> product
+=> 
+#<Product:0x00000271ae500010
+ id: 4,
+ created_at: "2026-01-21 17:19:15.489245000 +0000",
+ description: "This is sample description (faker example)",
+ is_active: false,
+ name: "Fantastic Rubber Computer",
+ price: 0.243e3,
+ stock: 21,
+ updated_at: "2026-01-21 17:19:15.489245000 +0000",
+ email: nil>
+project-db(dev):026> product.tags<<Tag.find(3)
+  Tag Load (1.3ms)  SELECT "tags".* FROM "tags" WHERE "tags"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+  TRANSACTION (0.3ms)  BEGIN /*application='ProjectDb'*/
+  Product::HABTM_Tags Create (2.0ms)  INSERT INTO "products_tags" ("product_id", "tag_id") VALUES (4, 3) /*application='ProjectDb'*/
+  TRANSACTION (5.3ms)  COMMIT /*application='ProjectDb'*/
+  Tag Load (1.7ms)  SELECT "tags".* FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 4 /* loading for pp */ LIMIT 11 /*application='ProjectDb'*/
+=>
+[#<Tag:0x00000271ae4ef148
+  id: 3,
+  name: "Special offer",
+  desc: "This item is selling at special offer",
+  created_at: "2026-02-06 05:37:22.778767000 +0000",
+  updated_at: "2026-02-06 05:37:22.778767000 +0000">]
+project-db(dev):027> product = Product.find(9)
+  Product Load (1.3ms)  SELECT "products".* FROM "products" WHERE "products"."id" = 9 LIMIT 1 /*application='ProjectDb'*/
+=> 
+#<Product:0x00000271ae501410
+...
+project-db(dev):028> product.tags<<Tag.find(3)
+  Tag Load (1.2ms)  SELECT "tags".* FROM "tags" WHERE "tags"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+  TRANSACTION (0.3ms)  BEGIN /*application='ProjectDb'*/
+  Product::HABTM_Tags Create (1.5ms)  INSERT INTO "products_tags" ("product_id", "tag_id") VALUES (9, 3) /*application='ProjectDb'*/
+  TRANSACTION (0.6ms)  COMMIT /*application='ProjectDb'*/
+  Tag Load (0.6ms)  SELECT "tags".* FROM "tags" INNER JOIN "products_tags" ON "tags"."id" = "products_tags"."tag_id" WHERE "products_tags"."product_id" = 9 /* loading for pp */ LIMIT 11 /*application='ProjectDb'*/
+=>
+[#<Tag:0x00000271ae4eed88
+  id: 3,
+  name: "Special offer",
+  desc: "This item is selling at special offer",
+  created_at: "2026-02-06 05:37:22.778767000 +0000",
+  updated_at: "2026-02-06 05:37:22.778767000 +0000">]
+project-db(dev):029> Tag.find(3).product.map do |one| one.name end
+  Tag Load (1.1ms)  SELECT "tags".* FROM "tags" WHERE "tags"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+(project-db):29:in '<main>': undefined method 'product' for an instance of Tag (NoMethodError)
+Did you mean?  products
+project-db(dev):030> Tag.find(3).products.map do |one| one.name end
+  Tag Load (0.9ms)  SELECT "tags".* FROM "tags" WHERE "tags"."id" = 3 LIMIT 1 /*application='ProjectDb'*/
+  Product Load (1.3ms)  SELECT "products".* FROM "products" INNER JOIN "products_tags" ON "products"."id" = "products_tags"."product_id" WHERE "products_tags"."tag_id" = 3 /*application='ProjectDb'*/
+=> ["Fantastic Rubber Computer", "Durable Silk Watch"]
+project-db(dev):031>
