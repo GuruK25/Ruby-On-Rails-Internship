@@ -961,3 +961,174 @@ In the namespaced models, the records of Category can be only accessed through P
 Can't access records directly from Category.
 
 Using namespaced models, we can create the relationship between tables without explicitly using associations.
+
+### ActiveRecord methods:
+
+1. **insert** :
+
+- insert method is used to insert the records to the database.
+- insert method skips validations and callbacks.
+- It returns result, not a model object.
+
+```bash
+   User.insert({col:val, col:val})
+```
+
+2. **insert_all** :
+
+- insert_all method works similar to insert method.
+- It has the ability to save multiple records into the database.
+- Need to pass the array of hashes.
+
+```bash
+   User.insert_all(
+   [
+   { name: "A", email: "a@test.com" },
+   { name: "B", email: "b@test.com" }
+   ]
+   )
+```
+
+3. **create :**
+
+- create method is used to create and save the record immediatly.
+- It runs validations and callbacks.
+- Saves to the DB immediatly.
+
+```bash
+   User.create(name: "Guru", email: "g@test.com")
+```
+
+4. **new :**
+
+- new method just creates the object (does not save, need to call save method explicitly).
+
+```bash
+   user = User.new(name: "Guru")
+   user.save
+```
+
+5. **first :**
+
+- It is one of the data accessing methods.
+- It returns the first record in the database.
+- By default the records are ordered in ascending order by ids.
+
+```bash
+   User.first
+```
+
+6. **last:**
+
+- This is also a data accessing methods.
+- It returns last record in the database.
+- By default the records are ordered in descending order by ids.
+- It returns latest record.
+
+```bash
+User.last
+```
+
+7. **take :**
+
+- This method will randomly select record and returns.
+
+```bash
+   User.take
+```
+
+8. **limit :**
+
+- It limits the number of records accessing.
+- It is used for pagination.
+
+```bash
+   User.limit(8)
+```
+
+9. **find :**
+
+- find method is used to find the record using id(primary key)
+- It raises error is the record not found. (ActiveRecord::RecordNotFound)
+
+```bash
+   User.find(3)
+```
+
+10. **find_by :**
+
+- find_by method is used to find the record by passing both column name and value
+- It returns record or nil.
+- It does not return any error if record does not exist.
+
+```bash
+    User.find_by(email:"ss@gmail.com")
+```
+
+11. **find_by! :**
+
+- It is similar to find_by method, but it rises the error if record does not exist.
+
+```bash
+    User.find_by!(email: "ss@gmail.com")
+```
+
+12. **where :**
+
+- This method is used to find and fetch all the records.
+- It returns collection.
+
+```bash
+    User.where(age:25)
+```
+
+- It can be chained.
+
+```bash
+    User.where(age:35).where(active:true)
+```
+
+13. **delete :**
+
+- This method is used to delete the records directly from the database.
+- It does not check validations and callbacks.
+
+```bash
+    User.delete(1)
+```
+
+14. **delete_all :**
+
+- This method is used to delete the multiple records from the database.
+
+```bash
+    User.where(active:false).delete_all
+```
+
+15. **destroy :**
+
+- This method is used to delete the records but it runs validations and callbacks.
+- It also runs dependent destroy
+
+```bash
+    User.find(1).destroy
+```
+
+16. **update :**
+
+- This method is used to update the existing records.
+
+```bash
+    user.update(name:"new name")
+```
+
+> Note: Used on objects.
+
+17. **updat_all :**
+
+- This method is used to bulk updation.
+- It does not run validations.
+
+```bash
+    User.where(active:false).update_all(active:true)
+```
